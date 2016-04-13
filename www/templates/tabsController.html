@@ -3,7 +3,7 @@
         <ion-tab title="Results" icon="ion-home" href="#/page1/results">
             <ion-nav-view name="tab1"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="Add" icon="ion-android-add-circle" href="#/page1/add">
+        <ion-tab title="Add" icon="ion-android-add-circle" ng-click="modal.show()" ><!--href="#/page1/add"-->
             <ion-nav-view name="tab4"></ion-nav-view>
         </ion-tab>
         <ion-tab title="Criterias" icon="ion-android-list" href="#/page1/criterias">
@@ -11,3 +11,4 @@
         </ion-tab>
     </ion-tabs>
 </ion-view>
+

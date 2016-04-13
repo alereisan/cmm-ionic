@@ -1,10 +1,12 @@
 <ion-view title="Criterias" id="page6">
-    <ion-content padding="false" class="has-header">
-        <form class="list"></form>
-        <ion-list>
-            <ion-item ui-sref="tabsController.editCriteria">Alpha Romeo 147</ion-item>
-            <ion-item>Item 2</ion-item>
-            <ion-item>Item 3</ion-item>
-        </ion-list>
-    </ion-content>
+  <ion-content padding="false" class="has-header">
+    <form class="list p0 m0" style="margin: 0; padding: 0;"></form>
+    <ion-list>
+      <ion-item ng-click="modal.show()">Alpha Romeo 147, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item><!--ui-sref="tabsController.editCriteria"-->
+      <ion-item ng-click="modal.show()">BMW Z4, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
+      <ion-item ng-click="modal.show()">Tesla Model 3, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
+      <ion-item ng-click="modal.show()">Audi A8, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
+      <ion-item ng-click="modal.show()">Jeep Defender, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>
