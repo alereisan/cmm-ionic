@@ -2,11 +2,16 @@
   <ion-content padding="false" class="has-header">
     <form class="list p0 m0" style="margin: 0; padding: 0;"></form>
     <ion-list>
-      <ion-item ng-click="modal.show()">Alpha Romeo 147, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item><!--ui-sref="tabsController.editCriteria"-->
-      <ion-item ng-click="modal.show()">BMW Z4, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
-      <ion-item ng-click="modal.show()">Tesla Model 3, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
-      <ion-item ng-click="modal.show()">Audi A8, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
-      <ion-item ng-click="modal.show()">Jeep Defender, EUR10.0000, 0-50.000KM, 2002-2016, Diesel</ion-item>
+      <span ng-repeat="criteria in criterias">
+        <ion-item ng-click="modal.show()">
+          <strong>{{criteria.tag}}:</strong> {{criteria.max_price | currency}} · 0-{{criteria.max_km | number}}KM · {{criteria.min_year}}-{{criteria.max_year}} · {{criteria.fuel}}
+        </ion-item>
+        <div class="item item-divider">
+          <span ng-if="criteria.autoscout24_de"><a href="http://wwww.autoscout24.de">Autoscout24.de</a></span>
+          <span ng-if="criteria.autoscout24_at"><a href="http://wwww.autoscout24.de">Autoscout24.at</a></span>
+          <span ng-if="criteria.willhaben"><a href="http://wwww.willhaben.at">Willhaben</a></span>
+        </div>
+      </span>
     </ion-list>
   </ion-content>
 </ion-view>
