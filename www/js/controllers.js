@@ -74,15 +74,111 @@ angular.module('app.controllers', [])
 
 })
 
-  .controller('loginCtrl', function($scope, $auth) {
+  .controller('loginCtrl', function($scope, $auth, $ionicPopup) {
+
   $scope.authenticate = function(provider) {
-    $auth.authenticate(provider);
+    $auth.authenticate(provider)
+      .then(function() {
+      $ionicPopup.alert({
+        title: 'Success',
+        content: 'You have successfully logged in!'
+      })
+    })
+      .catch(function(response) {
+      $ionicPopup.alert({
+        title: 'Error',
+        content: response.data ? response.data || response.data.message : response
+      })
+
+    });
+  };
+
+  $scope.user = [];
+
+  var user = {
+    email: $scope.user.email,
+    password: $scope.user.password
+  };
+
+  $scope.login = function() {
+    console.log($scope.user.email);
+    $auth.login({
+      email: $scope.user.email,
+      password: $scope.user.password
+    })
+      .then(function(response) {
+      // Redirect user here after a successful log in.
+    })
+      .catch(function(response) {
+      // Handle errors here, such as displaying a notification
+      // for invalid email and/or password.
+    });
+  };
+
+
+  $scope.logout = function() {
+    $auth.logout();
+  };
+
+  $scope.isAuthenticated = function() {
+    return $auth.isAuthenticated();
   };
 })
 
-  .controller('signupCtrl', function($scope, $auth) {
+  .controller('signupCtrl', function($scope, $auth, $ionicPopup) {
+
   $scope.authenticate = function(provider) {
-    $auth.authenticate(provider);
+    $auth.authenticate(provider)
+      .then(function() {
+      $ionicPopup.alert({
+        title: 'Success',
+        content: 'You have successfully logged in!'
+      })
+    })
+      .catch(function(response) {
+      $ionicPopup.alert({
+        title: 'Error',
+        content: response.data ? response.data || response.data.message : response
+      })
+
+    });
+  };
+  
+  $scope.user = [];
+
+  var user = {
+    //username: $scope.user.username,
+    email: $scope.user.email,
+    password: $scope.user.password
+  };
+
+  $scope.signup = function() {
+    $auth.signup({
+      //username: $scope.user.username,
+      email: $scope.user.email,
+      password: $scope.user.password
+    })
+      .then(function(response) {
+      // Redirect user here to login page or perhaps some other intermediate page
+      // that requires email address verification before any other part of the site
+      // can be accessed.
+      console.log(response);
+    })
+      .catch(function(response) {
+      // Handle errors here.
+      console.log(response);
+    });
+  };
+
+
+
+
+  $scope.logout = function() {
+    $auth.logout();
+  };
+
+  $scope.isAuthenticated = function() {
+    return $auth.isAuthenticated();
   };
 })
 

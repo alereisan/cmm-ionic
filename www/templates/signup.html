@@ -2,22 +2,22 @@
     <ion-content padding="true" class="has-header">
         <button id="signup-button14" class="button button-positive  button-block icon-left ion-social-facebook">Signup with Facebook</button>
         <button id="signup-button13" class="button button-assertive  button-block icon-left ion-social-google">Signup with Google</button>
-        <form class="list">
+        <form ng-submit="signup()" class="list">
             <ion-list>
                 <label class="item item-input">
                     <span class="input-label">E-Mail</span>
-                    <input type="email" placeholder="">
+                    <input type="email" ng-model="user.email" placeholder="" ng-required>
                 </label>
-                <label class="item item-input">
+                <label class="item item-input" style="display: none;">
                     <span class="input-label">Username</span>
-                    <input type="text" placeholder="">
+                    <input type="text" ng-model="username" placeholder="" ng-required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Password</span>
-                    <input type="text" placeholder="">
+                    <input type="password" ng-model="user.password" placeholder="" required>
                 </label>
             </ion-list>
-            <button id="signup-button10" class="button button-stable  button-block">Sign up</button>
+            <button type="submit" id="signup-button10" class="button button-stable  button-block">Sign up</button>
         </form>
     </ion-content>
 </ion-view>
