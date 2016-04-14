@@ -1,0 +1,27 @@
+form i.icon.error {
+  color: #ef4e3a; }
+
+form input + i.icon.error {
+  display: none;
+  margin-left: 8px;
+  margin-right: 8px; }
+
+form.ng-submitted input.ng-invalid + i.icon.error {
+  display: block; }
+
+form .has-error {
+  border-left: 5px solid #cc2511; }
+
+form .has-success {
+  border-left: 5px solid #3d8b3d; }
+
+form.ng-submitted input.ng-valid + i.icon.error {
+  display: none; }
+
+.m0 {
+  margin: 0 !important;
+}
+
+.p0 {
+  padding: 0 !important;
+}
