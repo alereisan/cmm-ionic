@@ -6,7 +6,7 @@
         <ion-item ng-click="openEditModal(criteria)">
           <strong>{{criteria.tag}}:</strong> {{criteria.max_price | currency}} · 0-{{criteria.max_km | number}}KM · {{criteria.min_year}}-{{criteria.max_year}} · {{criteria.fuel}}
         </ion-item>
-        <div class="item item-divider">
+        <div class="item item-divider" style="display: none;">
           <span ng-if="criteria.autoscout24_de"><a href="http://wwww.autoscout24.de">Autoscout24.de</a></span>
           <span ng-if="criteria.autoscout24_at"><a href="http://wwww.autoscout24.de">Autoscout24.at</a></span>
           <span ng-if="criteria.willhaben"><a href="http://wwww.willhaben.at">Willhaben</a></span>
