@@ -1,13 +1,6 @@
 angular.module('app.routes', [])
 
-  .config(function($stateProvider, $urlRouterProvider, StripeCheckoutProvider) {
-
-  // You can use the provider to set defaults for all handlers
-  // you create. Any of the options you'd pass to
-  // StripeCheckout.configure() are valid.
-  StripeCheckoutProvider.defaults({
-    key: "pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
-  });
+  .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -71,11 +64,7 @@ angular.module('app.routes', [])
     .state('premium', {
     url: '/premium',
     templateUrl: 'templates/premium.html',
-    controller: 'premiumCtrl',
-    resolve: {
-      // checkout.js isn't fetched until this is resolved.
-      stripe: StripeCheckoutProvider.load
-    }
+    controller: 'premiumCtrl'
   })
 
   $urlRouterProvider.otherwise('/page1/results')

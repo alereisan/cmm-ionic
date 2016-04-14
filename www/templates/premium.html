@@ -1,4 +1,4 @@
-<ion-view title="Premium" id="page13">
+<ion-view title="Premium" id="page13" ng-controller="premiumCtrl as vm">
   <ion-content padding="true" class="has-header">
     <h1>Get CMM-Premium</h1>
     <div id="premium-markdown9" style="color:#000000;">
@@ -6,7 +6,7 @@
         <strong>€19,99 / month</strong>
       </p>
     </div>
-    <button stripe-checkout="ctrl.doCheckout"
+    <button stripe-checkout="vm.doCheckout"
             data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
             data-name="CMM Premium"
             data-description="Subscription for CMM"
