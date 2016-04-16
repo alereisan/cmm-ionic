@@ -1,17 +1,13 @@
 angular.module('app.controllers', [])
 
-  .controller('tabsCtrl', function($scope, $ionicModal, $state, ionicToast, criterias, $cookies, $timeout, $window) {
+  .controller('tabsCtrl', function($scope, $ionicModal, $state, ionicToast, criterias, $cookies, $timeout, $window, $auth) {
 
   $scope.criterias = criterias.criterias;
-  console.log("Criterias: ")
-  console.log(criterias.criterias);
   $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
 
-
-  //$scope.currentUser.email = "testman@de.mail"
-
-  console.log("currentUser: " + $window.localStorage.getItem('currentUser'));
-  console.log("$scope.currentUser: " + $scope.currentUser);
+  $scope.isAuthenticated = function() {
+    return $auth.isAuthenticated();
+  };
 
   $ionicModal.fromTemplateUrl('templates/addCriteriaModal.html', {
     scope: $scope
@@ -30,7 +26,6 @@ angular.module('app.controllers', [])
       ionicToast.show('Please complete the form.', 'bottom', false, 5000);
       return;
     }
-    console.log(criteria);
     criterias.create({
       tags: criteria.tags,
       maxPrice: criteria.maxPrice,
@@ -38,14 +33,11 @@ angular.module('app.controllers', [])
       minBuildYear: criteria.minBuildYear,
       diesel: criteria.diesel
     }).then(function(res){
-      console.log(res.data);
-      console.log(res);
       $state.go('tabsController.criterias');
       $scope.modal.hide();
       ionicToast.show('Criteria created.', 'bottom', false, 5000);
     });
   };
-
 
 })
 
