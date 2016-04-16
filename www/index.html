@@ -8,15 +8,17 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/general.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
     <!-- Authentication -->
     <script src="lib/satellizer/satellizer.js"></script>
     <script src="lib/ionic-toast/dist/ionic-toast.bundle.min.js"></script>
     <script src="lib/angular-stripe-checkout/angular-stripe-checkout.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-<!-- <script src="cordova.js"></script> -->
+    <!-- <script src="cordova.js"></script> -->
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
 <link href="css/ionic.app.css" rel="stylesheet">
@@ -34,9 +36,9 @@
 -->
 
   </head>
-  <body ng-app="app" animation="slide-left-right-ios7">
+  <body ng-app="app" ng-controller="tabsCtrl" animation="slide-left-right-ios7">
     <div>
-      <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
+      <ion-side-menus enable-menu-with-back-views="false" ng-controller="navCtrl" data-componentid="side-menu21">
         <ion-side-menu-content>
           <ion-nav-bar class="bar-stable">
             <ion-nav-back-button></ion-nav-back-button>
@@ -53,9 +55,9 @@
           <ion-content padding="false" class="side-menu-left has-header">
             <ion-list data-componentid="list6">
               <ion-item class="item-thumbnail-left" data-componentid="list-item-thumbnail1">
-                <img>
-                <h2>Username</h2>
-                <p>user@mail.com</p>
+                <img ng-src="/www/img/cmm.png">
+                <h2>{{currentUser.displayName}}</h2>
+                <p>{{currentUser.email}}</p>
               </ion-item>
               <label class="item item-input" data-componentid="search2" style="display: none;">
                 <i class="icon ion-search placeholder-icon"></i>
@@ -65,8 +67,10 @@
               <ion-item ui-sref="settings" menu-close="" data-componentid="list-item16">Settings</ion-item>
               <ion-item ui-sref="premium" menu-close="" data-componentid="list-item12">Premium</ion-item>
             </ion-list>
-            <a ui-sref="login" menu-close="" id="menu-button23" class="button button-positive  button-block" data-componentid="button23">Sign in</a>
           </ion-content>
+          <ion-footer-bar class="p0">
+            <a ui-sref="login" menu-close="" id="menu-button23" class="button button-block button-balanced" data-componentid="button23">Sign in</a>
+          </ion-footer-bar>
         </ion-side-menu>
       </ion-side-menus>
     </div>

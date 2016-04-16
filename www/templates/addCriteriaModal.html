@@ -1,46 +1,46 @@
 <ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Add Criteria</h1>
+    <button class="button button-clear button-primary" ng-click="closeModal()">
+      <i class="icon ion-android-close"></i>
+    </button>
+  </ion-header-bar>
   <form ng-submit="createCriteria(criteria)">
-    <ion-header-bar class="bar bar-header bar-dark">
-      <h1 class="title">Add Criteria</h1>
-      <button class="button button-clear button-primary" ng-click="modal.hide()">
-        <i class="icon ion-android-close"></i>
-      </button>
-    </ion-header-bar>
     <ion-content class="padding">
       <div class="list">
         <div class="item item-divider">Which Car are you interested in?</div>
         <label class="item item-input" name="tags">
           <span class="input-label">Tags</span>
-          <input type="text" ng-model="criteria.tag" placeholder="Tesla Model 3">
+          <input type="text" ng-model="criteria.tags" placeholder="Tesla Model 3">
         </label>
         <label class="item item-input">
           <span class="input-label">Max. Price</span>
-          <input type="number" ng-model="criteria.max_price" placeholder="12.000">
+          <input type="number" ng-model="criteria.maxPrice" placeholder="12.000">
         </label>
         <label class="item item-input">
           <span class="input-label">Max. KM</span>
-          <input type="number" ng-model="criteria.max_km" placeholder="50.000">
+          <input type="number" ng-model="criteria.maxKmState" placeholder="50.000">
         </label>
         <label class="item item-input">
           <span class="input-label">Min. Year</span>
-          <input type="number" ng-model="criteria.min_year" placeholder="2002">
+          <input type="number" ng-model="criteria.minBuildYear" placeholder="2002">
         </label>
         <label class="item item-input">
           <span class="input-label">Max. Year</span>
-          <input type="number" ng-model="criteria.max_year" placeholder="2016">
+          <input type="number" ng-model="criteria.maxBuildYear" placeholder="2016">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Fuel</span>
-          <input type="text" ng-model="criteria.fuel" placeholder="Diesel">
-        </label>
+        <div class="item item-divider">Fuel Type?</div>
+        <ion-checkbox ng-model="criteria.diesel">Diesel</ion-checkbox>
+        <ion-checkbox ng-model="criteria.gasoline">Gasoline</ion-checkbox>
+        <ion-checkbox ng-model="criteria.electro">Elektro</ion-checkbox>
         <div class="item item-divider">Which Platforms?</div>
         <ion-checkbox ng-model="criteria.autoscout24_de">Autoscout24.de</ion-checkbox>
         <ion-checkbox ng-model="criteria.autoscout24_at">Autoscout24.at</ion-checkbox>
         <ion-checkbox ng-model="criteria.willhaben">Willhaben</ion-checkbox>
       </div>
     </ion-content>
-    <ion-footer-bar>
-      <button type="submit" id="addCriteria-button7" class="button button-balanced  button-block m0">Create</button>
+    <ion-footer-bar class="p0">
+      <button type="submit" id="addCriteria-button7" class="button button-full button-balanced m0">Create</button>
     </ion-footer-bar>
   </form>
 </ion-modal-view>

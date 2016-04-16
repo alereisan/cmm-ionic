@@ -8,12 +8,16 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-
-
     .state('tabsController', {
     url: '/page1',
     templateUrl: 'templates/tabsController.html',
-    controller: 'tabsCtrl',
+    controller: 'tabsCtrl as tabs',
+    resolve: {
+      criteriaPromise: ['criterias', function(criterias){
+        console.log("Inside criteriaPromise");
+        return criterias.getList();
+      }]
+    },
     abstract:true
   })
 
@@ -32,7 +36,7 @@ angular.module('app.routes', [])
     views: {
       'tab3': {
         templateUrl: 'templates/criterias.html',
-        controller: 'criteriasCtrl'
+        controller: 'criteriasCtrl',
       }
     }
   })

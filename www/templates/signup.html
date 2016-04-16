@@ -1,23 +1,29 @@
 <ion-view title="Signup" id="page9">
-    <ion-content padding="true" class="has-header">
-        <button id="signup-button14" class="button button-positive  button-block icon-left ion-social-facebook">Signup with Facebook</button>
-        <button id="signup-button13" class="button button-assertive  button-block icon-left ion-social-google">Signup with Google</button>
-        <form ng-submit="signup()" class="list">
-            <ion-list>
-                <label class="item item-input">
-                    <span class="input-label">E-Mail</span>
-                    <input type="email" ng-model="user.email" placeholder="" ng-required>
-                </label>
-                <label class="item item-input" style="display: none;">
-                    <span class="input-label">Username</span>
-                    <input type="text" ng-model="username" placeholder="" ng-required>
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">Password</span>
-                    <input type="password" ng-model="user.password" placeholder="" required>
-                </label>
-            </ion-list>
-            <button type="submit" id="signup-button10" class="button button-stable  button-block">Sign up</button>
-        </form>
-    </ion-content>
+  <ion-content padding="true" class="has-header">
+    <span ng-if="!isAuthenticated()">
+      <button ng-click="authenticate('facebook')" id="signup-button14" class="button button-positive  button-block icon-left ion-social-facebook">Signup with Facebook</button>
+      <button ng-click="authenticate('google')" id="signup-button13" class="button button-assertive  button-block icon-left ion-social-google">Signup with Google</button>
+      <form ng-submit="signup()" class="list">
+        <ion-list>
+          <label class="item item-input">
+            <span class="input-label">E-Mail</span>
+            <input type="email" ng-model="user.email" placeholder="" ng-required>
+          </label>
+          <label class="item item-input" style="display: none;">
+            <span class="input-label">Username</span>
+            <input type="text" ng-model="username" placeholder="" ng-required>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="user.password" placeholder="" required>
+          </label>
+        </ion-list>
+        <button type="submit" id="signup-button10" class="button button-stable  button-block">Sign up</button>
+      </form>
+    </span>
+    <span ng-if="isAuthenticated()">
+      <h1>You are logged in already</h1>
+      <button ng-click="logout()" id="login-button8" class="button">Logout</button>
+    </span>
+  </ion-content>
 </ion-view>

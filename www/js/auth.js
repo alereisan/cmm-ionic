@@ -3,16 +3,16 @@ angular.module('app.auth', [])
   .config(function($authProvider) {
 
   $authProvider.facebook({
-    clientID: ' Facebook App ID'
+    clientId: '749121558557564'
   });
 
   $authProvider.google({
-    clientId: 'Google Client ID'
+    clientId: '170853427136-o2oc0uono1i8cv3k9re92ff1bmg6g8ur.apps.googleusercontent.com'
   });
 
-  $authProvider.baseUrl = 'http://52.58.72.73/';
-  $authProvider.loginUrl = '/login';
-  $authProvider.signupUrl = '/User/save.json';
+  $authProvider.baseUrl = 'http://52.58.72.73:8080/';
+  $authProvider.loginUrl = '/auth/login';
+  $authProvider.signupUrl = '/auth/signup';
   //$authProvider.httpInterceptor = false;
   //$authProvider.withCredentials = false;
 
