@@ -15,13 +15,13 @@ angular.module('app.auth', [])
     commonConfig.redirectUri = 'http://localhost/';
   };
 
-  $authProvider.facebook({
+  $authProvider.facebook(angular.extend({}, commonConfig, {
     clientId: '749121558557564'
-  });
+  }));
 
-  $authProvider.google({
+  $authProvider.google(angular.extend({}, commonConfig, {
     clientId: '170853427136-o2oc0uono1i8cv3k9re92ff1bmg6g8ur.apps.googleusercontent.com'
-  });
+  }));
 
   $authProvider.baseUrl = 'http://52.58.72.73:8080/';
   $authProvider.loginUrl = '/auth/login';
