@@ -2,6 +2,19 @@ angular.module('app.auth', [])
 
   .config(function($authProvider) {
 
+  var commonConfig = {
+    popupOptions: {
+      location: 'no',
+      toolbar: 'yes',
+      width: window.screen.width,
+      height: window.screen.height
+    }
+  };
+
+  if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
+    commonConfig.redirectUri = 'http://localhost/';
+  };
+
   $authProvider.facebook({
     clientId: '749121558557564'
   });
