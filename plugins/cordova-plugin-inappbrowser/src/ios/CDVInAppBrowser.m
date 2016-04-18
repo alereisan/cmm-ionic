@@ -998,6 +998,12 @@
 
 @implementation CDVInAppBrowserNavigationController : UINavigationController
 
+- (void) dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    if ( self.presentedViewController) {
+        [super dismissViewControllerAnimated:flag completion:completion];
+    }
+}
+
 - (void) viewDidLoad {
 
     CGRect frame = [UIApplication sharedApplication].statusBarFrame;
@@ -1019,8 +1025,8 @@
             CGFloat temp = rect.size.width;
             rect.size.width = rect.size.height;
             rect.size.height = temp;
-            rect.origin = CGPointZero;
         }
+        rect.origin = CGPointZero;
     }
     return rect;
 }
