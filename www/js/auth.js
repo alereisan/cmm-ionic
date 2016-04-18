@@ -13,7 +13,7 @@ angular.module('app.auth', [])
 
   if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
     $authProvider.cordova = true;
-    commonConfig.redirectUri = 'http://52.58.72.73:8080/auth/callback/';
+    commonConfig.redirectUri = 'http://localhost/';
   };
 
   $authProvider.facebook(angular.extend({}, commonConfig, {
