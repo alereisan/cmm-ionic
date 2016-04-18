@@ -18,11 +18,13 @@ angular.module('app.auth', [])
   };
 
   $authProvider.facebook(angular.extend({}, commonConfig, {
-    clientId: '749121558557564'
+    clientId: '749121558557564',
+    url: 'http://52.58.72.73:8080/auth/facebook'
   }));
 
   $authProvider.google(angular.extend({}, commonConfig, {
-    clientId: '170853427136-o2oc0uono1i8cv3k9re92ff1bmg6g8ur.apps.googleusercontent.com'
+    clientId: '170853427136-o2oc0uono1i8cv3k9re92ff1bmg6g8ur.apps.googleusercontent.com',
+    url: 'http://52.58.72.73:8080/auth/google'
   }));
 
   $authProvider.baseUrl = 'http://52.58.72.73:8080/';
