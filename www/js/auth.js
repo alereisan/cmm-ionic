@@ -13,6 +13,7 @@ angular.module('app.auth', [])
 
   if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
     $authProvider.cordova = true;
+    $authProvider.platform = 'mobile';
     commonConfig.redirectUri = 'http://localhost/';
   };
 
