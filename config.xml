@@ -73,6 +73,6 @@
     <splash src="resources/wp8/splash/SplashScreenImage.png" width="768" height="1280"/>
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-  <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+  <plugin name="cordova-plugin-inappbrowser" />
   <access origin="*" />
 </widget>
