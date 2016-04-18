@@ -5,6 +5,13 @@ angular.module('app.controllers', [])
   $scope.criterias = criterias.criterias;
   $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
 
+  $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
+    if(oldVal!==newVal){
+      console.log('Local Storage data changed!');
+      $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
+    }
+  })
+
   $scope.isAuthenticated = function() {
     return $auth.isAuthenticated();
   };
@@ -96,10 +103,6 @@ angular.module('app.controllers', [])
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
       .then(function(response) {
-      console.log("Logged in, response.data.user: " + response.data.user);
-      console.log("Logged in, response.data: " + response.data);
-      console.log("Logged in, response: " + response);
-      console.log(response);
       $window.localStorage.currentUser = JSON.stringify(response.data.user);
       $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
       $state.go('tabsController.results');
@@ -107,14 +110,12 @@ angular.module('app.controllers', [])
         title: 'Success',
         content: 'You have successfully logged in!'
       });
-
     })
       .catch(function(response) {
       $ionicPopup.alert({
         title: 'Error',
         content: response.data ? response.data || response.data.message : response
       })
-
     });
   };
 
@@ -130,18 +131,16 @@ angular.module('app.controllers', [])
       email: $scope.user.email,
       password: $scope.user.password
     }).then(function(response) {
-      console.log("Logged in, response: " + response.data.user);
       $window.localStorage.currentUser = JSON.stringify(response.data.user);
       $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
       $state.go('tabsController.results');
-      // Redirect user here after a successful log in.
     }).catch(function(response) {
-      console.log("Loggin ERROR, response: " + response);
-      // Handle errors here, such as displaying a notification
-      // for invalid email and/or password.
+      $ionicPopup.alert({
+        title: 'Error',
+        content: response.data ? response.data || response.data.message : response
+      })
     });
   };
-
 
   $scope.logout = function() {
     $auth.logout();
@@ -152,7 +151,7 @@ angular.module('app.controllers', [])
   };
 })
 
-  .controller('signupCtrl', function($scope, $auth, $ionicPopup, $state) {
+  .controller('signupCtrl', function($scope, $auth, $ionicPopup, $state, $window, $rootScope) {
 
   $scope.isAuthenticated = function() {
     return $auth.isAuthenticated();
@@ -160,7 +159,10 @@ angular.module('app.controllers', [])
 
   $scope.authenticate = function(provider) {
     $auth.authenticate(provider)
-      .then(function() {
+      .then(function(response) {
+      $window.localStorage.currentUser = JSON.stringify(response.data.user);
+      $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+      $state.go('tabsController.results');
       $ionicPopup.alert({
         title: 'Success',
         content: 'You have successfully logged in!'
@@ -178,31 +180,31 @@ angular.module('app.controllers', [])
   $scope.user = [];
 
   var user = {
-    //username: $scope.user.username,
     email: $scope.user.email,
     password: $scope.user.password
   };
 
   $scope.signup = function() {
     $auth.signup({
-      //username: $scope.user.username,
       email: $scope.user.email,
       password: $scope.user.password
     })
       .then(function(response) {
-      // Redirect user here to login page or perhaps some other intermediate page
-      // that requires email address verification before any other part of the site
-      // can be accessed.
-      console.log(response);
+      console.log(response.data);
+      $auth.login({
+        email: $scope.user.email,
+        password: $scope.user.password
+      })
+      $window.localStorage.currentUser = JSON.stringify(response.data.user);
+      $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
       $ionicPopup.alert({
         title: 'Success',
         content: 'You have successfully signed up!'
+      }).then(function() {
+        $state.go('tabsController.results');
       })
-      $state.go('tabsController.results');
     })
       .catch(function(response) {
-      // Handle errors here.
-      console.log(response);
       $ionicPopup.alert({
         title: 'Error',
         content: response.data ? response.data || response.data.message : response
