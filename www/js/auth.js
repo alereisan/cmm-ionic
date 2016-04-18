@@ -13,8 +13,7 @@ angular.module('app.auth', [])
 
   if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
     $authProvider.cordova = true;
-    $authProvider.platform = 'mobile';
-    commonConfig.redirectUri = 'http://localhost/page1/';
+    commonConfig.redirectUri = 'http://localhost/callback';
   };
 
   $authProvider.facebook(angular.extend({}, commonConfig, {
@@ -27,6 +26,7 @@ angular.module('app.auth', [])
     url: 'http://52.58.72.73:8080/auth/google'
   }));
 
+  $authProvider.platform = 'mobile';
   $authProvider.baseUrl = 'http://52.58.72.73:8080/';
   $authProvider.loginUrl = '/auth/login';
   $authProvider.signupUrl = '/auth/signup';
