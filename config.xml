@@ -2,13 +2,12 @@
 <widget id="com.ionicframework.cmm505262" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>CMM</name>
   <description>
-        Car Market Monitoring: Monitor car sales from several marketplaces based on your search critera.
-    </description>
+    Car Market Monitoring: Monitor car sales from several marketplaces based on your search critera.
+  </description>
   <author email="a.reichgruber@gmail.com" href="http://example.com.com/">
-      sansen
-    </author>
+    sansen
+  </author>
   <content src="index.html"/>
-  <access origin="*"/>
   <allow-navigation href="http://*/*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
@@ -74,5 +73,6 @@
     <splash src="resources/wp8/splash/SplashScreenImage.png" width="768" height="1280"/>
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-  <plugin name="cordova-plugin-inappbrowser" spec="~1.3.0" />
+  <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+  <access origin="*" />
 </widget>
