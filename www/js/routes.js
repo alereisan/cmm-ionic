@@ -13,11 +13,15 @@ angular.module('app.routes', [])
     templateUrl: 'templates/tabsController.html',
     controller: 'tabsCtrl as tabs',
     resolve: {
+      loginRequired: loginRequired,
       criteriaPromise: ['criterias', function(criterias){
         console.log("Inside criteriaPromise");
         return criterias.getList();
       }],
-      loginRequired: loginRequired
+      resultPromise: ['cars', function(cars){
+        console.log("Inside resultPromise");
+        return cars.getResults();
+      }]
     },
     abstract:true
   })

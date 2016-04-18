@@ -1,8 +1,10 @@
 angular.module('app.controllers', [])
 
-  .controller('tabsCtrl', function($scope, $ionicModal, $state, ionicToast, criterias, $cookies, $timeout, $window, $auth) {
+  .controller('tabsCtrl', function($scope, $ionicModal, $state, ionicToast, criterias, cars, $cookies, $timeout, $window, $auth) {
 
   $scope.criterias = criterias.criterias;
+  $scope.cars = cars.cars;
+  
   $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
 
   $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){

@@ -3,22 +3,21 @@
     <span ng-if="!isAuthenticated()">
       <button ng-click="authenticate('facebook')" id="signup-button14" class="button button-positive  button-block icon-left ion-social-facebook">Signup with Facebook</button>
       <button ng-click="authenticate('google')" id="signup-button13" class="button button-assertive  button-block icon-left ion-social-google">Signup with Google</button>
-      <form ng-submit="signup()" class="list">
-        <ion-list>
-          <label class="item item-input">
+      <form novalidate="novalidate" ng-submit="signup()" class="list">
+        <div class="list">
+          <div class="item item-divider">Or Login with Email:</div>
+          <label class="item item-input validated">
             <span class="input-label">E-Mail</span>
-            <input type="email" ng-model="user.email" placeholder="" ng-required>
+            <input type="text" ng-model="user.email" placeholder="" required name="email">
+            <i class="icon ion-alert-circled error"></i>
           </label>
-          <label class="item item-input" style="display: none;">
-            <span class="input-label">Username</span>
-            <input type="text" ng-model="username" placeholder="" ng-required>
-          </label>
-          <label class="item item-input">
+          <label class="item item-input validated">
             <span class="input-label">Password</span>
-            <input type="password" ng-model="user.password" placeholder="" required>
+            <input type="password" ng-model="user.password" required ng-minlength="6" name="password" placeholder="">
+            <i class="icon ion-alert-circled error"></i>
           </label>
-        </ion-list>
-        <button type="submit" id="signup-button10" class="button button-stable  button-block">Sign up</button>
+        </div>
+        <button ng-disabled="!user.email || !user.password" type="submit" id="signup-button10" class="button button-stable  button-block">Sign up</button>
       </form>
     </span>
     <span ng-if="isAuthenticated()">

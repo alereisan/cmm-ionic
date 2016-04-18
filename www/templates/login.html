@@ -5,7 +5,7 @@
       <button ng-click="authenticate('google')" id="login-button12" class="button button-assertive  button-block icon-left ion-social-google">Sign in with Google</button>
       <form novalidate="novalidate" on-valid-submit="login()">
         <div class="list">
-          <div class="item item-divider">Or Login with Email:</div>
+          <div class="item item-divider">Login with Email:</div>
           <label class="item item-input validated">
             <span class="input-label">E-Mail</span>
             <input type="text" ng-model="user.email" placeholder="" required name="email">
@@ -17,7 +17,7 @@
             <i class="icon ion-alert-circled error"></i>
           </label>
         </div>
-        <button type="submit" id="login-button8" class="button button-balanced  button-block">Log in</button>
+        <button ng-disabled="!user.email || !user.password" type="submit" id="login-button8" class="button button-balanced  button-block">Log in</button>
         <button ui-sref="signup" id="login-button9" class="button button-positive  button-block button-clear">Or create an account</button>
       </form>
     </span>
