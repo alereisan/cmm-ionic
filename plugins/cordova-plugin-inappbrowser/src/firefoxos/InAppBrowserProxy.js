@@ -21,7 +21,9 @@
 
 // https://developer.mozilla.org/en-US/docs/WebAPI/Browser
 
-var modulemapper = require('cordova/modulemapper');
+var cordova = require('cordova'),
+    channel = require('cordova/channel'),
+    modulemapper = require('cordova/modulemapper');
 
 var origOpenFunc = modulemapper.getOriginalSymbol(window, 'window.open');
 var browserWrap;
@@ -47,7 +49,9 @@ var IABExecs = {
         var strUrl = args[0],
             target = args[1],
             features_string = args[2] || "location=yes", //location=yes is default
-            features = {};
+            features = {},
+            url,
+            elem;
 
         var features_list = features_string.split(',');
         features_list.forEach(function(feature) {
@@ -57,7 +61,7 @@ var IABExecs = {
             } else if (tup[1] == 'no') {
                 tup[1] = false;
             } else {
-                var number = parseInt(tup[1]);
+                var number = parseInt(tup[1]);    
                 if (!isNaN(number)) {
                     tup[1] = number;
                 }
@@ -111,7 +115,7 @@ var IABExecs = {
             back.classList.add('inAppBrowserBack');
             forward.classList.add('inAppBrowserForward');
 
-            var checkForwardBackward = function () {
+            function checkForwardBackward() {
                 var backReq = browserElem.getCanGoBack();
                 backReq.onsuccess = function() {
                     if (this.result) {
@@ -119,7 +123,7 @@ var IABExecs = {
                     } else {
                         back.classList.add('disabled');
                     }
-                };
+                }
                 var forwardReq = browserElem.getCanGoForward();
                 forwardReq.onsuccess = function() {
                     if (this.result) {
@@ -127,7 +131,7 @@ var IABExecs = {
                     } else {
                         forward.classList.add('disabled');
                     }
-                };
+                }
             };
 
             browserElem.addEventListener('mozbrowserloadend', checkForwardBackward);
@@ -159,16 +163,16 @@ var IABExecs = {
                 win({
                     type:'loadstart',
                     url : e.detail
-                });
+                })
             }, false);
             browserElem.addEventListener('mozbrowserloadend', function(e){
-                win({type:'loadstop'});
+                win({type:'loadstop'})
             }, false);
             browserElem.addEventListener('mozbrowsererror', function(e){
-                win({type:'loaderror'});
+                win({type:'loaderror'})
             }, false);
             browserElem.addEventListener('mozbrowserclose', function(e){
-                win({type:'exit'});
+                win({type:'exit'})
             }, false);
         } else {
             window.location = strUrl;
