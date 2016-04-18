@@ -194,11 +194,19 @@ angular.module('app.controllers', [])
       // that requires email address verification before any other part of the site
       // can be accessed.
       console.log(response);
+      $ionicPopup.alert({
+        title: 'Success',
+        content: 'You have successfully signed up!'
+      })
       $state.go('tabsController.results');
     })
       .catch(function(response) {
       // Handle errors here.
       console.log(response);
+      $ionicPopup.alert({
+        title: 'Error',
+        content: response.data ? response.data || response.data.message : response
+      })
     });
   };
 

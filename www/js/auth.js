@@ -14,7 +14,7 @@ angular.module('app.auth', [])
   if (ionic.Platform.isIOS() || ionic.Platform.isAndroid()) {
     $authProvider.cordova = true;
     $authProvider.platform = 'mobile';
-    commonConfig.redirectUri = 'http://localhost/';
+    commonConfig.redirectUri = 'http://localhost/page1/';
   };
 
   $authProvider.facebook(angular.extend({}, commonConfig, {
