@@ -1,0 +1,38 @@
+<ion-view hide-tab-bar title="{{openedCar.title}}" id="page8" ng-controller="detailViewCtrl">
+  <ion-content padding="true" class="has-header">
+    <ul class="list">
+      <li class="item" ng-if="openedCar.address">Address: {{openedCar.address}}</li>
+      <li class="item" ng-if="openedCar.bodyType">Body Type: {{openedCar.bodyType}}</li>
+      <li class="item" ng-if="openedCar.buildYear">
+        Built: <span ng-if="openedCar.buildMonth">{{openedCar.buildMonth}} / </span>{{openedCar.buildYear}}
+      </li>
+      <li class="item">Seller:
+        <span ng-if="openedCar.dealer">Dealer</span>
+        <span ng-if="!openedCar.dealer">Private</span>
+      </li>
+      <li class="item" ng-if="openedCar.diesel">Fuel: Diesel</li>
+      <li class="item" ng-if="openedCar.kmState">KM-State: {{openedCar.kmState}}km</li>
+      <li class="item" ng-if="openedCar.address">Price: {{openedCar.price}}€</li>
+      <button ng-click="showMore = !showMore" id="addCriteria-button7" class="button button-full button-stable m0">
+        {{ showMore ? 'Less Details ...' : 'More Details ...'}}
+      </button>
+      <span ng-if="showMore">
+        <li class="item" ng-if="openedCar.description">{{openedCar.description}}</li>
+        <li class="item">Provider: {{openedCar.provider}}</li>
+        <li class="item">ID: {{openedCar.id}}</li>
+        <li class="item">Identifier: {{openedCar.identifier}}</li>
+      </span>
+    </ul>
+
+    <div class="item item-image">
+      <img src="{{openedCar.image}}">
+    </div>
+  </ion-content>
+  <ion-footer-bar class="" style="bottom: 0 !important;">
+    <div class="button-bar">
+      <a href="tel:" class="button icon ion-android-call button-balanced"></a>
+      <a href="https://willhaben.com" class="button icon ion-android-open button-dark"></a>
+      <a href="mailto:" class="button icon ion-android-mail button-energized"></a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

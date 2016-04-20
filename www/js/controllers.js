@@ -3,8 +3,7 @@ angular.module('app.controllers', [])
   .controller('tabsCtrl', function($scope, $ionicModal, $state, ionicToast, criterias, cars, $cookies, $timeout, $window, $auth) {
 
   $scope.criterias = criterias.criterias;
-  $scope.cars = cars.cars;
-  
+
   $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
 
   $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
@@ -47,11 +46,32 @@ angular.module('app.controllers', [])
       ionicToast.show('Criteria created.', 'bottom', false, 5000);
     });
   };
-
 })
 
-  .controller('resultsCtrl', function($scope) {
+  .controller('resultsCtrl', function($scope, $state, cars) {
+  console.log("Welcome to Results");
 
+  $scope.cars = cars.cars;
+
+  $scope.incrementCarClick = function(car) {
+    cars.incrementCarClick({
+      id: car.id
+    });
+  };
+
+  $scope.openDetailView = function(car) {
+    cars.copyCar(car)
+    console.log(car);
+    $state.go('tabsController.results.detailView');
+
+  };
+})
+
+  .controller('detailViewCtrl', function($scope, cars) {
+  $scope.openedCar = [];
+  $scope.openedCar = cars.openedCar;
+
+  console.log("Welcome to detailView: " + $scope.openedCar.title);
 })
 
   .controller('criteriasCtrl', function($scope, $ionicModal, ionicToast, criterias) {

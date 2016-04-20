@@ -17,10 +17,6 @@ angular.module('app.routes', [])
       criteriaPromise: ['criterias', function(criterias){
         console.log("Inside criteriaPromise");
         return criterias.getList();
-      }],
-      resultPromise: ['cars', function(cars){
-        console.log("Inside resultPromise");
-        return cars.getResults();
       }]
     },
     abstract:true
@@ -33,8 +29,22 @@ angular.module('app.routes', [])
         templateUrl: 'templates/results.html',
         controller: 'resultsCtrl',
         resolve: {
-          loginRequired: loginRequired
+          loginRequired: loginRequired,
+          resultPromise: ['cars', function(cars){
+            console.log("Inside resultPromise");
+            return cars.getResults();
+          }]
         }
+      }
+    }
+  })
+
+    .state('tabsController.results.detailView', {
+    url: '/car/:id',
+    views: {
+      'tab1@tabsController': {
+        templateUrl: 'templates/detail-view.html',
+        controller: 'detailViewCtrl'
       }
     }
   })

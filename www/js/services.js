@@ -53,16 +53,28 @@ angular.module('app.services', [])
 
   function($http){
     var o = {
-      cars: []
+      cars: [],
+      openedCar: []
     };
 
     var url = "http://52.58.72.73:8080";
 
+    o.incrementCarClick = function(carId) {
+      return $http.post(url + '/carclick/save', carId).success(function(data){
+
+      });
+    };
 
     o.getResults = function() {
       return $http.get(url + '/car/list').success(function(data) {
         angular.copy(data, o.cars);
       });
+    };
+
+    o.copyCar = function(car) {
+      console.log("copying car: " + car.title);
+      angular.copy(car, o.openedCar);
+      console.log("o.openedCar: " + o.openedCar.title);
     };
 
     return o;

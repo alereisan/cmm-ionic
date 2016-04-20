@@ -1,62 +1,13 @@
 <ion-view title="Results" id="page5">
   <ion-content padding="false" class="has-header">
     <ion-list>
-      <ion-item ng-repeat="car in cars" class="item-thumbnail-left">
+      <ion-item ng-repeat="car in cars" class="item-thumbnail-left" ng-click="openDetailView(car)">
         <img ng-src="{{car.image}}">
         <h2>{{car.title}}</h2>
         <p>{{car.kmState}} km, BJ {{car.buildYear}}, <span ng-if="car.diesel">Diesel</span></p>
         <p>€ {{car.price}}</p>
         <p>{{car.provider}}</p>
       </ion-item>
-      <div class="item item-divider">
-        <a href="tel:" id="results-button3" class="button icon ion-android-call"></a>
-        <a href="mailto:" id="results-button4" class="button icon ion-android-mail"></a>
-      </div>
     </ion-list>
-
-    <!--
-<div class="list card">
-<div class="item item-divider">Suzuku Jimny</div>
-<div class="item item-body">
-<div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
-<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-</div>
-<div id="results-markdown1" style="color:#000000;">
-<p>15.000 km, BJ 2004, Diesel</p>
-</div>
-<a href="tel:" id="results-button1" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-call"></a>
-<a href="mailto:" id="results-button2" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-mail"></a>
-</div>
-<div class="item item-divider">€ 1200.00</div>
-</div>
-<div class="list card">
-<div class="item item-divider">Suzuku Jimny</div>
-<div class="item item-body">
-<div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
-<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-</div>
-<div id="results-markdown2" style="color:#000000;">
-<p>15.000 km, BJ 2004, Diesel</p>
-</div>
-<a href="tel:" id="results-button3" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-call"></a>
-<a href="mailto:" id="results-button4" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-mail"></a>
-</div>
-<div class="item item-divider">€ 1200.00</div>
-</div>
-<div class="list card">
-<div class="item item-divider">Suzuku Jimny</div>
-<div class="item item-body">
-<div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
-<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-</div>
-<div id="results-markdown3" style="color:#000000;">
-<p>15.000 km, BJ 2004, Diesel</p>
-</div>
-<a href="tel:" id="results-button5" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-call"></a>
-<a href="mailto:" id="results-button6" style="border-radius:500px 500px 500px 500px;" class="button button-light  icon ion-android-mail"></a>
-</div>
-<div class="item item-divider">€ 1200.00</div>
-</div>
--->
   </ion-content>
 </ion-view>
