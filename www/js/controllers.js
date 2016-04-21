@@ -103,13 +103,22 @@ angular.module('app.controllers', [])
   $scope.openDetailView = function(car) {
     cars.copyCar(car)
     console.log(car);
-    $state.go('tabsController.results.detailView');
+    $state.go('tabsController.results.detailView', {id: car.id});
   };
 })
 
-  .controller('detailViewCtrl', function($scope, $state, cars) {
+  .controller('detailViewCtrl', function($scope, $state, cars, $timeout, $stateParams) {
   $scope.openedCar = [];
   $scope.openedCar = cars.openedCar;
+
+  $timeout(function(){
+    if($scope.openedCar.length == 0) {
+      console.log("Loading Car Details from Backend ...");
+      cars.getOpenedCar($stateParams.id)
+    } else {
+      console.log("Resolved Car Details from Service!");
+    }
+  }, 1000);
 
   $scope.userClickCount = 0;
 
@@ -297,26 +306,61 @@ angular.module('app.controllers', [])
   };
 })
 
-  .controller('settingsCtrl', function($scope) {
+  .controller('settingsCtrl', function($scope, $state, $timeout, payments) {
+  $scope.paid = payments.paid;
+  $scope.activePlan = payments.activePlan;
 
+  $scope.goToPremium = function() {
+
+    $timeout(function(){
+      $scope.paid = false;
+      $state.go('premium');
+    }, 0);
+  };
+
+  $scope.$watch(function () { return payments.paid },function(newVal,oldVal){
+    if(oldVal!==newVal){
+      console.log('$scope.paid has changed!');
+      $scope.paid = payments.paid;
+    };
+  });
 })
 
   .controller('listingCtrl', function($scope) {
 
 })
 
-  .controller('premiumCtrl', function($scope, payments, $timeout) {
+  .controller('premiumCtrl', function($scope, payments, users, $timeout, ionicToast) {
 
   $scope.paymentPackages = payments.paymentPackages;
+  $scope.activePaymentPackage = [];
+  $scope.payParams = [];
+  $scope.currentUser = users.currentUser;
 
   $timeout(function() {
     payments.getPaymentPackages().then(function(){
       console.log(payments.paymentPackages);
     });
+    users.getLoggedInUser();
   }, 0);
 
-  this.doCheckout = function(token) {
-    alert("Got Stripe token: " + token.id);
+  $scope.setPaymentPackage = function(p) {
+    $scope.activePaymentPackage = p;
+    console.log("activePaymentPackage set to: ");
+    console.log($scope.activePaymentPackage);
+  };
+
+  $scope.doCheckout = function(token) {
+    $scope.payParams.token = token;
+    $scope.payParams.activePlan = $scope.activePaymentPackage;
+    console.log("Got Stripe token: ");
+    console.log(token);
+    console.log("Got PaymentPackage.id: " + $scope.activePaymentPackage.id);
+    console.log($scope.payParams);
+
+    payments.sendStripeToken($scope.payParams).then(function(){
+      ionicToast.show('CMM Premium activated.', 'bottom', false, 5000);
+    });
   };
 
 })

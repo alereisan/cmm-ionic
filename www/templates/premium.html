@@ -8,10 +8,13 @@
     </div>
     <div class="list">
       <div class="item item-divider">Subscription License</div>
-      <button ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position' "stripe-checkout="vm.doCheckout"
+      <button ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
               data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
               data-name="{{p.name}}"
+              data-email="{{currentUser.email}}"
               data-description="{{p.description}}"
+              data-bitcoin="true"
+              data-locale="auto"
               data-image="{{p.image}}"
               data-amount="{{p.price}}"
               data-currency="eur"
@@ -19,7 +22,7 @@
         {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}/Month
       </button>
       <div class="item item-divider">Fixed Price Licenses</div>
-      <button ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" stripe-checkout="vm.doCheckout"
+      <button ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" stripe-checkout="doCheckout(token, item)"
               data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
               data-name="{{p.name}}"
               data-description="{{p.description}}"

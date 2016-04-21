@@ -60,7 +60,7 @@ angular.module('app.services', [])
     var url = "http://52.58.72.73:8080";
 
     o.incrementCarClick = function(carId) {
-      return $http.post(url + '/carclick/save', carId).success(function(data){
+      return $http.post(url + '/carclick/save', carId).success(function(data) {
 
       });
     };
@@ -75,6 +75,12 @@ angular.module('app.services', [])
       console.log("copying car: " + car.title);
       angular.copy(car, o.openedCar);
       console.log("o.openedCar: " + o.openedCar.title);
+    };
+
+    o.getOpenedCar = function(id) {
+      return $http.get(url + '/car/detail/' + id).success(function(data) {
+        angular.copy(data, o.openedCar);
+      });
     };
 
     return o;
@@ -93,6 +99,7 @@ angular.module('app.services', [])
     o.getLoggedInUser = function() {
       return $http.get(url + '/user/loggedinuser').success(function(data) {
         angular.copy(data, o.currentUser);
+        console.log("logged in user stored on users.currentUser")
       });
     };
 
@@ -104,7 +111,9 @@ angular.module('app.services', [])
 
   function($http){
     var o = {
-      paymentPackages: []
+      paymentPackages: [],
+      paid: false,
+      activePlan: []
     };
 
     var url = "http://52.58.72.73:8080";
@@ -112,6 +121,15 @@ angular.module('app.services', [])
     o.getPaymentPackages = function() {
       return $http.get(url + '/paymentpackage/list').success(function(data) {
         angular.copy(data, o.paymentPackages);
+      });
+    };
+
+    o.sendStripeToken = function(payParams) {
+      return $http.post(url + '/pay', payParams).success(function(data) {
+        o.paid = true;
+        o.activePlan = payParams.paymentPackage;
+        console.log("paid status is now " + o.paid + ", and activePlan is now: ");
+        console.log(o.activePlan);
       });
     };
 
