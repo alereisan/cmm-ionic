@@ -4,8 +4,8 @@
       <ion-item ng-repeat="car in cars" class="item-thumbnail-left" ng-click="openDetailView(car)">
         <img ng-src="{{car.image}}">
         <h2>{{car.title}}</h2>
-        <p>{{car.kmState}} km, BJ {{car.buildYear}}, <span ng-if="car.diesel">Diesel</span></p>
-        <p>€ {{car.price}}</p>
+        <p>{{car.kmState}} km, BJ {{car.buildYear}}<span ng-if="car.diesel">, Diesel</span></p>
+        <p class="price">€ {{car.price}}</p>
         <p>{{car.provider}}</p>
       </ion-item>
     </ion-list>

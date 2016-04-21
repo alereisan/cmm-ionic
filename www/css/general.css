@@ -59,3 +59,18 @@ form.ng-submitted input.ng-valid + i.icon.error {
   transform: translate3d(0, 49px, 0);
   -webkit-transform: translate3d(0, 49px, 0);
 }
+
+.price {
+  color: #64BB64 !important;
+}
+
+.price-label {
+  position: absolute;
+  padding: 5px;
+  background-color: #64BB64;
+  color: #fff;
+  bottom: 0;
+  left: 0;
+  font-size: 18px;
+
+}
