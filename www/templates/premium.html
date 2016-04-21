@@ -1,4 +1,4 @@
-<ion-view title="Premium" id="page13" ng-controller="premiumCtrl as vm" style="background-color: #F5F5F5;">
+<ion-view title="Premium" id="page13" style="background-color: #F5F5F5;">
   <ion-content padding="true" class="has-header">
     <h1>CMM Premium</h1>
     <p>0 of 5 monthly free connections left.
@@ -8,33 +8,26 @@
     </div>
     <div class="list">
       <div class="item item-divider">Subscription License</div>
-      <button stripe-checkout="vm.doCheckout"
+      <button ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position' "stripe-checkout="vm.doCheckout"
               data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
-              data-name="CMM Premium"
-              data-description="Subscription for CMM"
-              data-image="/www/img/cmm.png"
-              data-amount="1999"
+              data-name="{{p.name}}"
+              data-description="{{p.description}}"
+              data-image="{{p.image}}"
+              data-amount="{{p.price}}"
+              data-currency="eur"
               class="button button-balanced  button-block">
-        Subscription: {{ 19.99 | currency:"€":2 }}/Month (recurring)
+        {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}/Month
       </button>
       <div class="item item-divider">Fixed Price Licenses</div>
-      <button stripe-checkout="vm.doCheckout"
+      <button ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" stripe-checkout="vm.doCheckout"
               data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
-              data-name="CMM Premium"
-              data-description="Subscription for CMM"
-              data-image="/www/img/cmm.png"
-              data-amount="1999"
+              data-name="{{p.name}}"
+              data-description="{{p.description}}"
+              data-image="{{p.image}}"
+              data-amount="{{p.price}}"
+              data-currency="eur"
               class="button button-positive  button-block">
-        1-Month-License: {{ 24.99 | currency:"€":2 }} (fixed)
-      </button>
-      <button stripe-checkout="vm.doCheckout"
-              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
-              data-name="CMM Premium"
-              data-description="Subscription for CMM"
-              data-image="/www/img/cmm.png"
-              data-amount="1999"
-              class="button button-positive  button-block">
-        3-Month-License: {{ 66.99 | currency:"€":2 }} (fixed)
+        {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}
       </button>
     </div>
   </ion-content>

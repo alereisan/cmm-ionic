@@ -78,8 +78,46 @@ angular.module('app.services', [])
     };
 
     return o;
-
   }])
+
+  .factory('users', [
+  '$http',
+
+  function($http){
+    var o = {
+      currentUser: []
+    };
+
+    var url = "http://52.58.72.73:8080";
+
+    o.getLoggedInUser = function() {
+      return $http.get(url + '/user/loggedinuser').success(function(data) {
+        angular.copy(data, o.currentUser);
+      });
+    };
+
+    return o;
+  }])
+
+  .factory('payments', [
+  '$http',
+
+  function($http){
+    var o = {
+      paymentPackages: []
+    };
+
+    var url = "http://52.58.72.73:8080";
+
+    o.getPaymentPackages = function() {
+      return $http.get(url + '/paymentpackage/list').success(function(data) {
+        angular.copy(data, o.paymentPackages);
+      });
+    };
+
+    return o;
+  }])
+
 
   .service('BlankService', [function(){
 

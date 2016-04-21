@@ -21,6 +21,7 @@
         <li class="item">Provider: {{openedCar.provider}}</li>
         <li class="item">ID: {{openedCar.id}}</li>
         <li class="item">Identifier: {{openedCar.identifier}}</li>
+        <li class="item" ng-if="openedCar.date">Found at: {{openedCar.date | date}}</li>
       </span>
       <button ng-click="showMore = !showMore" id="addCriteria-button7" class="button button-full button-stable m0">
         {{ showMore ? 'Less Details ...' : 'More Details ...'}}

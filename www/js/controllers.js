@@ -305,7 +305,15 @@ angular.module('app.controllers', [])
 
 })
 
-  .controller('premiumCtrl', function($scope) {
+  .controller('premiumCtrl', function($scope, payments, $timeout) {
+
+  $scope.paymentPackages = payments.paymentPackages;
+
+  $timeout(function() {
+    payments.getPaymentPackages().then(function(){
+      console.log(payments.paymentPackages);
+    });
+  }, 0);
 
   this.doCheckout = function(token) {
     alert("Got Stripe token: " + token.id);
