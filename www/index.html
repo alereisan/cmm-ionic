@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" />-->
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -65,12 +65,15 @@
                 <input type="search" placeholder="">
               </label>
               <ion-item ui-sref="tabsController.results" menu-close="" data-componentid="list-item11">Home</ion-item>
-              <ion-item ui-sref="settings" menu-close="" data-componentid="list-item16">Settings</ion-item>
+              <ion-item ui-sref="info" menu-close="">Information</ion-item>
               <ion-item ui-sref="premium" menu-close="" data-componentid="list-item12">Premium</ion-item>
+              <ion-item ui-sref="settings" menu-close="" data-componentid="list-item16">Settings</ion-item>
             </ion-list>
           </ion-content>
           <ion-footer-bar class="p0">
-            <a ui-sref="login" menu-close="" id="menu-button23" class="button button-block button-balanced" data-componentid="button23">Sign in</a>
+            <div class="button-bar">
+              <a ui-sref="login" menu-close="" id="menu-button23" class="button button-block button-light" data-componentid="button23">Logout</a>
+            </div>
           </ion-footer-bar>
         </ion-side-menu>
       </ion-side-menus>

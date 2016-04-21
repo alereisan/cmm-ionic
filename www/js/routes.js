@@ -49,6 +49,68 @@ angular.module('app.routes', [])
     }
   })
 
+    .state('tabsController.add', {
+    url: '/add',
+    views: {
+      'tab2': {
+        templateUrl: 'templates/add.html',
+        controller: 'tabsCtrl',
+        resolve: {
+          loginRequired: loginRequired
+        }
+      }
+    }
+  })
+
+    .state('tabsController.add.tags', {
+    url: '/tags',
+    views: {
+      'tags': {
+        templateUrl: 'templates/add-step1.html',
+        controller: 'tabsCtrl',
+        resolve: {
+          loginRequired: loginRequired
+        }
+      }
+    }
+  })
+
+    .state('tabsController.add.specs', {
+    url: '/specs',
+    views: {
+      'specs': {
+        templateUrl: 'templates/add-step2.html',
+        resolve: {
+          loginRequired: loginRequired
+        }
+      }
+    }
+  })
+
+    .state('tabsController.add.fuel', {
+    url: '/fuel',
+    views: {
+      'fuel': {
+        templateUrl: 'templates/add-step3.html',
+        resolve: {
+          loginRequired: loginRequired
+        }
+      }
+    }
+  })
+
+    .state('tabsController.add.providers', {
+    url: '/providers',
+    views: {
+      'providers': {
+        templateUrl: 'templates/add-step4.html',
+        resolve: {
+          loginRequired: loginRequired
+        }
+      }
+    }
+  })
+
     .state('tabsController.criterias', {
     url: '/criterias',
     views: {
@@ -102,6 +164,24 @@ angular.module('app.routes', [])
     resolve: {
       loginRequired: loginRequired
     }
+  })
+
+    .state('info', {
+    url: '/info',
+    templateUrl: 'templates/info.html',
+    controller: 'infoCtrl'
+  })
+
+    .state('about', {
+    url: '/about',
+    templateUrl: 'templates/about.html',
+    controller: 'aboutCtrl'
+  })
+
+    .state('imprint', {
+    url: '/imprint',
+    templateUrl: 'templates/imprint.html',
+    controller: 'imprintCtrl'
   })
 
   $urlRouterProvider.otherwise('/page1/results')

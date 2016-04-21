@@ -1,19 +1,41 @@
-<ion-view title="Premium" id="page13" ng-controller="premiumCtrl as vm">
+<ion-view title="Premium" id="page13" ng-controller="premiumCtrl as vm" style="background-color: #F5F5F5;">
   <ion-content padding="true" class="has-header">
-    <h1>Get CMM-Premium</h1>
+    <h1>CMM Premium</h1>
+    <p>0 of 5 monthly free connections left.
     <div id="premium-markdown9" style="color:#000000;">
-      <p>Be ahead of your competition and receive unlimited instant Notifications and Results about new Cars from several Car Markets, for just
-        <strong>€19,99 / month</strong>
-      </p>
+      <h4>Be ahead of your competition!</h4>
+      <p>Receive <strong>unlimited Car Results</strong> from several Car Markets, within your area.</p>
     </div>
-    <button stripe-checkout="vm.doCheckout"
-            data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
-            data-name="CMM Premium"
-            data-description="Subscription for CMM"
-            data-image="/www/img/cmm.png"
-            data-amount="1999"
-            class="button button-positive  button-block">
-      Get Unlimited Results: {{ 19.99 | currency }}/Month
-    </button>
+    <div class="list">
+      <div class="item item-divider">Subscription License</div>
+      <button stripe-checkout="vm.doCheckout"
+              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
+              data-name="CMM Premium"
+              data-description="Subscription for CMM"
+              data-image="/www/img/cmm.png"
+              data-amount="1999"
+              class="button button-balanced  button-block">
+        Subscription: {{ 19.99 | currency:"€":2 }}/Month (recurring)
+      </button>
+      <div class="item item-divider">Fixed Price Licenses</div>
+      <button stripe-checkout="vm.doCheckout"
+              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
+              data-name="CMM Premium"
+              data-description="Subscription for CMM"
+              data-image="/www/img/cmm.png"
+              data-amount="1999"
+              class="button button-positive  button-block">
+        1-Month-License: {{ 24.99 | currency:"€":2 }} (fixed)
+      </button>
+      <button stripe-checkout="vm.doCheckout"
+              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
+              data-name="CMM Premium"
+              data-description="Subscription for CMM"
+              data-image="/www/img/cmm.png"
+              data-amount="1999"
+              class="button button-positive  button-block">
+        3-Month-License: {{ 66.99 | currency:"€":2 }} (fixed)
+      </button>
+    </div>
   </ion-content>
 </ion-view>

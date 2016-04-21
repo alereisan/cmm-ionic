@@ -1,0 +1,26 @@
+<form ng-submit="createCriteriaStep2(criteria)">
+  <ion-content class="padding">
+    <div class="list">
+      <div class="item item-divider">Specifications?</div>
+      <label class="item item-input">
+        <span class="input-label">Max. Price</span>
+        <input type="number" ng-model="criteria.maxPrice" placeholder="12.000">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Max. KM</span>
+        <input type="number" ng-model="criteria.maxKmState" placeholder="50.000">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Min. Year</span>
+        <input type="number" ng-model="criteria.minBuildYear" placeholder="2002">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Max. Year</span>
+        <input type="number" ng-model="criteria.maxBuildYear" placeholder="2016">
+      </label>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="p0">
+    <button type="submit" class="button button-full button-balanced m0">Next</button>
+  </ion-footer-bar>
+</form>
