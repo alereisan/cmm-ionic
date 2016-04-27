@@ -131,12 +131,18 @@ angular.module('app.controllers', [])
   $scope.openedCar = [];
   $scope.openedCar = cars.openedCar;
 
+
   $timeout(function(){
     if($scope.openedCar.length == 0) {
       console.log("Loading Car Details from Backend ...");
-      cars.getOpenedCar($stateParams.id)
+      cars.getOpenedCar($stateParams.id).then(function(res){
+        console.log(res);
+        $scope.carImages = $scope.openedCar.detailImages.split(';');
+      })
+      console.log($scope.openedCar);
     } else {
       console.log("Resolved Car Details from Service!");
+      $scope.carImages = $scope.openedCar.detailImages.split(';');
     }
   }, 1000);
 
