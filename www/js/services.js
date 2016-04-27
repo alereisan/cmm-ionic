@@ -12,7 +12,7 @@ angular.module('app.services', [])
       criterias: []
     };
 
-    var url = "http://52.58.72.73:8080";
+    var url = "http://52.29.189.227:8080";
 
     o.getList = function() {
       return $http.get(url + '/criteria/list').success(function(data) {
@@ -57,7 +57,7 @@ angular.module('app.services', [])
       openedCar: []
     };
 
-    var url = "http://52.58.72.73:8080";
+    var url = "http://52.29.189.227:8080";
 
     o.incrementCarClick = function(carId) {
       return $http.post(url + '/carclick/save', carId).success(function(data) {
@@ -65,9 +65,9 @@ angular.module('app.services', [])
       });
     };
 
-    o.getResults = function() {
-      return $http.get(url + '/car/list').success(function(data) {
-        angular.copy(data, o.cars);
+    o.getResults = function(page) {
+      return $http.get(url + '/car/list/' + page).success(function(data) {
+        //o.cars.push(data);
       });
     };
 
@@ -94,7 +94,7 @@ angular.module('app.services', [])
       currentUser: []
     };
 
-    var url = "http://52.58.72.73:8080";
+    var url = "http://52.29.189.227:8080";
 
     o.getLoggedInUser = function() {
       return $http.get(url + '/user/loggedinuser').success(function(data) {
@@ -116,7 +116,7 @@ angular.module('app.services', [])
       activePlan: []
     };
 
-    var url = "http://52.58.72.73:8080";
+    var url = "http://52.29.189.227:8080";
 
     o.getPaymentPackages = function() {
       return $http.get(url + '/paymentpackage/list').success(function(data) {
@@ -124,12 +124,9 @@ angular.module('app.services', [])
       });
     };
 
-    o.sendStripeToken = function(payParams) {
-      return $http.post(url + '/pay', payParams).success(function(data) {
+    o.sendStripeToken = function(id, token) {
+      return $http.post(url + '/payment/' + id, token).success(function(data) {
         o.paid = true;
-        o.activePlan = payParams.paymentPackage;
-        console.log("paid status is now " + o.paid + ", and activePlan is now: ");
-        console.log(o.activePlan);
       });
     };
 

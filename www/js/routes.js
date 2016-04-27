@@ -29,11 +29,7 @@ angular.module('app.routes', [])
         templateUrl: 'templates/results.html',
         controller: 'resultsCtrl',
         resolve: {
-          loginRequired: loginRequired,
-          resultPromise: ['cars', function(cars){
-            console.log("Inside resultPromise");
-            return cars.getResults();
-          }]
+          loginRequired: loginRequired
         }
       }
     }

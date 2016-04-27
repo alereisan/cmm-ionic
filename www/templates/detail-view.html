@@ -1,10 +1,13 @@
 <ion-view hide-tab-bar title="{{openedCar.title}}" id="page8" ng-controller="detailViewCtrl">
   <ion-content padding="false" class="has-header">
     <div class="item item-image">
-      <img src="{{openedCar.image}}" style="max-height: calc(100vh - 50px)">
+      <img src="{{openedCar.image}}" style="max-height: calc(100vh - 150px)">
       <div class="price-label" ng-if="openedCar.price">{{openedCar.price}}€</div>
     </div>
     <ul class="list" style="margin-bottom: 128px;">
+      <li class="item item-divider" ng-if="openedCar.description">Description</li>
+      <li class="item" ng-if="openedCar.description">{{openedCar.description}}</li>
+      <li class="item item-divider">Details</li>
       <li class="item" ng-if="openedCar.address">Address: {{openedCar.address}}</li>
       <li class="item" ng-if="openedCar.bodyType">Body Type: {{openedCar.bodyType}}</li>
       <li class="item" ng-if="openedCar.buildYear">
@@ -17,7 +20,6 @@
       <li class="item" ng-if="openedCar.diesel">Fuel: Diesel</li>
       <li class="item" ng-if="openedCar.kmState">KM-State: {{openedCar.kmState}}km</li>
       <span ng-if="showMore">
-        <li class="item" ng-if="openedCar.description">{{openedCar.description}}</li>
         <li class="item">Provider: {{openedCar.provider}}</li>
         <li class="item">ID: {{openedCar.id}}</li>
         <li class="item">Identifier: {{openedCar.identifier}}</li>

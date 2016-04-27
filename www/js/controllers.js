@@ -105,6 +105,26 @@ angular.module('app.controllers', [])
     console.log(car);
     $state.go('tabsController.results.detailView', {id: car.id});
   };
+
+  var page = 0;
+  $scope.allLoaded = false;
+
+  $scope.loadMore = function() {
+    cars.getResults(page).success(function(items) {
+      if(items.length < 1) {
+        $scope.allLoaded = true;
+      }
+      page++;
+      console.log(items);
+      $scope.cars = $scope.cars.concat(items);
+      console.log($scope.cars);
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+  $scope.$on('$stateChangeSuccess', function() {
+    $scope.loadMore();
+  });
 })
 
   .controller('detailViewCtrl', function($scope, $state, cars, $timeout, $stateParams) {
@@ -358,7 +378,7 @@ angular.module('app.controllers', [])
     console.log("Got PaymentPackage.id: " + $scope.activePaymentPackage.id);
     console.log($scope.payParams);
 
-    payments.sendStripeToken($scope.payParams).then(function(){
+    payments.sendStripeToken($scope.activePaymentPackage.id, token).then(function(){
       ionicToast.show('CMM Premium activated.', 'bottom', false, 5000);
     });
   };
