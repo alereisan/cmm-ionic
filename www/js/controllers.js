@@ -32,6 +32,7 @@ angular.module('app.controllers', [])
   $scope.hideTabBar = false;
 
   $scope.createCriteria = function(criteria) {
+    console.log(criteria);
     if(!criteria.tags || criteria.tags === '') {
       ionicToast.show('Please complete the form.', 'bottom', false, 5000);
       return;
@@ -48,52 +49,13 @@ angular.module('app.controllers', [])
       ionicToast.show('Criteria created.', 'bottom', false, 5000);
     });
   };
-
-  $scope.createCriteriaStep1 = function(criteria) {
-    $scope.criteria.tags = criteria.tags;
-    $state.go('tabsController.add.specs');
-    $scope.stepNumber = 2;
-    $scope.hideTabBar = true;
-  };
-
-  $scope.createCriteriaStep2 = function(criteria) {
-    $scope.criteria.maxPrice = criteria.maxPrice;
-    $scope.criteria.maxKmState = criteria.maxKmState;
-    $scope.criteria.minBuildYear = criteria.minBuildYear;
-    $state.go('tabsController.add.fuel');
-    $scope.stepNumber = 3;
-    $scope.hideTabBar = true;
-  };
-
-  $scope.createCriteriaStep3 = function(criteria) {
-    $scope.criteria.diesel = criteria.diesel;
-    $state.go('tabsController.add.providers');
-    $scope.stepNumber = 4;
-    $scope.hideTabBar = true;
-  };
-
-  $scope.createCriteriaStep4 = function(criteria) {
-    //TODO: GET PLATFORMS (WILLHABEN;AUTOSCOUT;..)
-    if(!$scope.criteria.tags || $scope.criteria.tags === '') {
-      ionicToast.show('Please complete the form.', 'bottom', false, 5000);
-      $state.go('tabsController.add.tags');
-      return;
-    }
-    criterias.create({
-      tags: $scope.criteria.tags,
-      maxPrice: $scope.criteria.maxPrice,
-      maxKmState: $scope.criteria.maxKmState,
-      minBuildYear: $scope.criteria.minBuildYear,
-      diesel: $scope.criteria.diesel
-    }).then(function(res){
-      $state.go('tabsController.criterias');
-      $scope.modal.hide();
-      ionicToast.show('Criteria created.', 'bottom', false, 5000);
-    });
-  };
 })
 
-
+  .controller('addCtrl', function($scope, $state) {
+    $scope.createCriteria = function(criteria) {
+      console.log("Form submitted");
+    };
+})
 
   .controller('resultsCtrl', function($scope, $state, cars) {
   console.log("Welcome to Results");

@@ -1,12 +1,12 @@
 <ion-view title="Tabs Controller" id="page1">
-    <ion-tabs class="tabs-stable tabs-icon-top">
-        <ion-tab title="Results" icon="ion-android-car" href="#/page1/results">
+    <ion-tabs class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
+        <ion-tab title="{{ 'RESULTS' | translate }}" icon="ion-android-car" href="#/page1/results">
             <ion-nav-view name="tab1"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="Add" icon="ion-plus" ng-click="modal.show()"><!-- ui-sref="tabsController.add.tags"-->
+        <ion-tab title="{{ 'ADD' | translate }}" icon="ion-plus" ui-sref="tabsController.add"><!-- ui-sref="tabsController.add.tags"-->
             <ion-nav-view name="tab2"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="Criterias" icon="ion-android-list" href="#/page1/criterias">
+        <ion-tab title="{{ 'CRITERIAS' | translate }}" icon="ion-android-list" href="#/page1/criterias">
             <ion-nav-view name="tab3"></ion-nav-view>
         </ion-tab>
     </ion-tabs>

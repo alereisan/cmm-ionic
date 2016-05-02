@@ -1,6 +1,48 @@
-<ion-view title="Add Criteria (Step {{stepNumber}}/4)">
-  <div ui-view="tags"></div>
-  <div ui-view="specs"></div>
-  <div ui-view="fuel"></div>
-  <div ui-view="providers"></div>
+<ion-view title="{{ 'ADD_CRITERIA' | translate }}" hide-nav-bar="false">
+  <form ng-submit="createCriteria(criteria)">
+    <ion-content >
+      <div class="padding">
+        <h4>{{ 'ADD_CRITERIA_HEADING' | translate }}</h4>
+        <p>{{ 'ADD_CRITERIA_PARAGRAPH' | translate }}</p>
+      </div>
+      <div class="list">
+        <div class="item item-divider">{{ 'WHICH_CAR' | translate }}</div>
+        <label class="item item-input" name="tags">
+          <span class="input-label">{{ 'TAGS' | translate }}</span>
+          <input type="text" ng-model="criteria.tags" placeholder="Tesla Model 3" autofocus>
+        </label>
+        <div class="item item-divider">{{ 'SPECIFICATIONS' | translate }}</div>
+        <label class="item item-input">
+          <span class="input-label">{{ 'MAX_PRICE' | translate }}</span>
+          <input type="number" ng-model="criteria.maxPrice" placeholder="12.000">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">{{ 'MAX_KM' | translate }}</span>
+          <input type="number" ng-model="criteria.maxKmState" placeholder="50.000">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">{{ 'MIN_YEAR' | translate }}</span>
+          <input type="number" ng-model="criteria.minBuildYear" placeholder="2002">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">{{ 'MAX_YEAR' | translate }}</span>
+          <input type="number" ng-model="criteria.maxBuildYear" placeholder="2016">
+        </label>
+        <div class="item item-divider">{{ 'FUEL_TYPE' | translate }}</div>
+        <ion-checkbox ng-model="criteria.diesel" ng-checked="true" class="checkbox-balanced">{{ 'DIESEL' | translate }}</ion-checkbox>
+        <ion-checkbox ng-model="criteria.gasoline" ng-checked="true" class="checkbox-balanced">{{ 'GASOLINE' | translate }}</ion-checkbox>
+        <ion-checkbox ng-model="criteria.electro" ng-checked="true" class="checkbox-balanced">{{ 'ELECTRO' | translate }}</ion-checkbox>
+
+        <div class="item item-divider" ng-checked="true">{{ 'WHICH_PLATFORMS' | translate }}</div>
+        <ion-checkbox ng-model="criteria.autoscout24_at" ng-checked="true" class="checkbox-balanced">Autoscout24.at</ion-checkbox>
+        <ion-checkbox ng-model="criteria.willhaben" ng-checked="true" class="checkbox-balanced">Willhaben.at</ion-checkbox>
+        <ion-checkbox ng-model="criteria.gebrauchtwagen_at" ng-checked="true" class="checkbox-balanced">Gebrauchtwagen.at</ion-checkbox>
+        <ion-checkbox ng-model="criteria.car4you" ng-checked="true" class="checkbox-balanced">Car4you.at</ion-checkbox>
+        <ion-checkbox ng-model="criteria.mobile_de" ng-checked="true" class="checkbox-balanced">mobile.de (Austria)</ion-checkbox>
+      </div>
+    </ion-content>
+    <ion-footer-bar class="p0">
+      <button type="submit" ng-disabled="!criteria.tags" id="addCriteria-button7" class="button button-full button-balanced m0">{{ 'CREATE_CRITERIA' | translate }}</button>
+    </ion-footer-bar>
+  </form>
 </ion-view>

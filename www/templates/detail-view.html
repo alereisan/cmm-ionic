@@ -5,28 +5,29 @@
       <div class="price-label" ng-if="openedCar.price">{{openedCar.price}}€</div>
     </div>
     <ul class="list" style="margin-bottom: 128px;">
-      <li class="item item-divider" ng-if="openedCar.description">Description</li>
+      <li class="item item-divider" ng-if="openedCar.description">{{ 'DESCRIPTION' | translate }}</li>
       <li class="item" ng-if="openedCar.description" style="white-space: normal;">{{openedCar.description}}</li>
-      <li class="item item-divider">Details</li>
-      <li class="item" ng-if="openedCar.address">Address: {{openedCar.address}}</li>
-      <li class="item" ng-if="openedCar.bodyType">Body Type: {{openedCar.bodyType}}</li>
+      <li class="item item-divider">{{ 'DETAILS' | translate }}</li>
+      <li class="item" ng-if="openedCar.address">{{ 'ADDRESS' | translate }}: {{openedCar.address}}</li>
+      <li class="item" ng-if="openedCar.bodyType">{{ 'BODY_TYPE' | translate }}: {{openedCar.bodyType}}</li>
       <li class="item" ng-if="openedCar.buildYear">
-        Built: <span ng-if="openedCar.buildMonth">{{openedCar.buildMonth}} / </span>{{openedCar.buildYear}}
+        {{ 'BUILT' | translate }}: <span ng-if="openedCar.buildMonth">{{openedCar.buildMonth}} / </span>{{openedCar.buildYear}}
       </li>
-      <li class="item">Seller:
-        <span ng-if="openedCar.dealer">Dealer</span>
-        <span ng-if="!openedCar.dealer">Private</span>
+      <li class="item">{{ 'SELLER' | translate }}:
+        <span ng-if="openedCar.dealer">{{ 'DEALER' | translate }}</span>
+        <span ng-if="!openedCar.dealer">{{ 'PRIVATE' | translate }}</span>
       </li>
-      <li class="item" ng-if="openedCar.diesel">Fuel: Diesel</li>
-      <li class="item" ng-if="openedCar.kmState">KM-State: {{openedCar.kmState}}km</li>
+      <li class="item" ng-if="openedCar.diesel">{{ 'FUEL' | translate }}: Diesel</li>
+      <li class="item" ng-if="openedCar.kmState">{{ 'KM_STATE' | translate }}: {{openedCar.kmState}}km</li>
       <span ng-if="showMore">
-        <li class="item">Provider: {{openedCar.provider}}</li>
-        <li class="item">ID: {{openedCar.id}}</li>
-        <li class="item">Identifier: {{openedCar.identifier}}</li>
-        <li class="item" ng-if="openedCar.date">Found at: {{openedCar.date | date}}</li>
+        <li class="item">{{ 'PROVIDER' | translate }}: {{openedCar.provider}}</li>
+        <li class="item">{{ 'ID' | translate }}: {{openedCar.id}}</li>
+        <li class="item">{{ 'IDENTIFIER' | translate }}: {{openedCar.identifier}}</li>
+        <li class="item" ng-if="openedCar.date">{{ 'FOUND_AT' | translate }}: {{openedCar.date | date}}</li>
       </span>
       <button ng-click="showMore = !showMore" id="addCriteria-button7" class="button button-full button-stable m0">
-        {{ showMore ? 'Less Details ...' : 'More Details ...'}}
+        <span ng-if="showMore">{{ 'LESS_DETAILS' | translate }}</span>
+        <span ng-if="!showMore">{{ 'MORE_DETAILS' | translate }}</span>
       </button>
     </ul>
   </ion-content>
