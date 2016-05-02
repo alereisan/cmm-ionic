@@ -50,6 +50,7 @@ angular.module('app.routes', [])
     views: {
       'tab2': {
         templateUrl: 'templates/add.html',
+        controller: 'addCtrl',
         resolve: {
           loginRequired: loginRequired
         }
@@ -108,7 +109,10 @@ angular.module('app.routes', [])
     templateUrl: 'templates/premium.html',
     controller: 'premiumCtrl',
     resolve: {
-      loginRequired: loginRequired
+      loginRequired: loginRequired,
+      publishablePromise: ['payments', function(payments){
+        return payments.getStripePublishable();
+      }]
     }
   })
 

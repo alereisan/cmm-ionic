@@ -43,7 +43,8 @@ angular.module('app.translations', [])
     MAX_YEAR: 'Max. Year',
     DIESEL: 'Diesel',
     GASOLINE: 'Gasoline',
-    ELECTRO: 'Electro'
+    ELECTRO: 'Electro',
+    PULL_TO_REFRESH: 'Pull to refresh...'
   });
   $translateProvider.translations('de', {
     TITLE: 'Hallo',
@@ -73,7 +74,7 @@ angular.module('app.translations', [])
     MENU: 'Menü',
     ADD_CRITERIA: 'Kriterium hinzufügen',
     ADD_CRITERIA_HEADING: 'Automärkte überwachen',
-    ADD_CRITERIA_PARAGRAPH: 'Erstelle ein Suchkriterium für ein Auto welches du erwerben möchtest. Wir überwachen diverse Marktplätze und benachrichtigen dich, sobald wir ein Auto finden welches auf deine eingegebenen Kriterien zutrifft.',
+    ADD_CRITERIA_PARAGRAPH: 'Erstelle ein Suchkriterium für ein Auto welches du erwerben möchtest. Wir überwachen diverse Marktplätze und benachrichtigen dich, sobald wir ein Auto finden, welches auf deine eingegebenen Kriterien zutrifft.',
     WHICH_CAR: 'Welches Auto möchtest du erwerben?',
     SPECIFICATIONS: 'Spezifikationen?',
     FUEL_TYPE: 'Treibstoff?',
@@ -86,7 +87,8 @@ angular.module('app.translations', [])
     MAX_YEAR: 'Max. Baujahr',
     DIESEL: 'Diesel',
     GASOLINE: 'Benzin',
-    ELECTRO: 'Elektro'
+    ELECTRO: 'Elektro',
+    PULL_TO_REFRESH: 'Ziehen zum aktualisieren...'
   });
   $translateProvider.preferredLanguage('de');
   $translateProvider.fallbackLanguage('de');

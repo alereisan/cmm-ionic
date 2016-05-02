@@ -124,6 +124,13 @@ angular.module('app.services', [])
       });
     };
 
+    o.getStripePublishable = function() {
+      return $http.get(url + '/payment/stripePublishable').success(function(data) {
+        angular.copy(data, o.stripePublishable);
+        console.log(o.stripePublishable);
+      });
+    };
+
     o.sendStripeToken = function(id, token) {
       return $http.post(url + '/payment/' + id, token).success(function(data) {
         o.paid = true;

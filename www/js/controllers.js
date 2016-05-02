@@ -52,9 +52,9 @@ angular.module('app.controllers', [])
 })
 
   .controller('addCtrl', function($scope, $state) {
-    $scope.createCriteria = function(criteria) {
-      console.log("Form submitted");
-    };
+  $scope.createCriteria = function(criteria) {
+    console.log("Form submitted");
+  };
 })
 
   .controller('resultsCtrl', function($scope, $state, cars) {
@@ -85,8 +85,22 @@ angular.module('app.controllers', [])
   };
 
   $scope.$on('$stateChangeSuccess', function() {
+    page = 0;
+    console.log("inside ResultsCtrl");
     $scope.loadMore();
   });
+
+  
+
+  $scope.doRefresh = function() {
+    cars.getResults(0).success(function(items) {
+      $scope.cars = items;
+      page = 1;
+      $scope.allLoaded = false;
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    })
+  }
 })
 
   .controller('detailViewCtrl', function($scope, $state, cars, $timeout, $stateParams) {
