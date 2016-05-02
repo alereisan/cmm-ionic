@@ -113,7 +113,8 @@ angular.module('app.services', [])
     var o = {
       paymentPackages: [],
       paid: false,
-      activePlan: []
+      activePlan: [],
+      stripePublishable: []
     };
 
     var url = "http://52.29.189.227:8080";

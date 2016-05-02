@@ -90,7 +90,7 @@ angular.module('app.controllers', [])
     $scope.loadMore();
   });
 
-  
+
 
   $scope.doRefresh = function() {
     cars.getResults(0).success(function(items) {
@@ -338,6 +338,7 @@ angular.module('app.controllers', [])
   $scope.activePaymentPackage = [];
   $scope.payParams = [];
   $scope.currentUser = users.currentUser;
+  $scope.stripePublishable = payments.stripePublishable;
 
   $timeout(function() {
     payments.getPaymentPackages().then(function(){

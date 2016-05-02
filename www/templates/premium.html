@@ -1,7 +1,7 @@
 <ion-view title="Premium" id="page13" style="background-color: #F5F5F5;">
   <ion-content padding="true" class="has-header">
     <h1>CMM Premium</h1>
-    <p>0 of 5 monthly free connections left.
+    <p>0 of 5 monthly free connections left. 
     <div id="premium-markdown9" style="color:#000000;">
       <h4>Be ahead of your competition!</h4>
       <p>Receive <strong>unlimited Car Results</strong> from several Car Markets, within your area.</p>
@@ -9,7 +9,7 @@
     <div class="list">
       <div class="item item-divider">Subscription License</div>
       <button ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
-              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
+              data-key="{{stripePublishable.stripePublishable}}"
               data-name="{{p.name}}"
               data-email="{{currentUser.email}}"
               data-description="{{p.description}}"
@@ -23,7 +23,7 @@
       </button>
       <div class="item item-divider">Fixed Price Licenses</div>
       <button ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
-              data-key="pk_test_4jGQ8zdPbK4Y2eOpTf8ASTUX"
+              data-key="{{stripePublishable.stripePublishable}}"
               data-name="{{p.name}}"
               data-email="{{currentUser.email}}"
               data-description="{{p.description}}"
