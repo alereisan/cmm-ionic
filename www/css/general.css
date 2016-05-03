@@ -75,3 +75,11 @@ form.ng-submitted input.ng-valid + i.icon.error {
   left: 0;
   font-size: 18px;
 }
+
+.redtext {
+  color: red;
+}
+
+.greentext {
+  color: green;
+}

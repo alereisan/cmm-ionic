@@ -8,7 +8,6 @@ angular.module('app.controllers', [])
 
   $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
     if(oldVal!==newVal){
-      console.log('Local Storage data changed!');
       $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
     }
   })
@@ -32,7 +31,6 @@ angular.module('app.controllers', [])
   $scope.hideTabBar = false;
 
   $scope.createCriteria = function(criteria) {
-    console.log(criteria);
     if(!criteria.tags || criteria.tags === '') {
       ionicToast.show('Please complete the form.', 'bottom', false, 5000);
       return;
@@ -52,19 +50,15 @@ angular.module('app.controllers', [])
 })
 
   .controller('addCtrl', function($scope, $state) {
-  $scope.createCriteria = function(criteria) {
-    console.log("Form submitted");
-  };
+
 })
 
   .controller('resultsCtrl', function($scope, $state, cars) {
-  console.log("Welcome to Results");
 
   $scope.cars = cars.cars;
 
   $scope.openDetailView = function(car) {
-    cars.copyCar(car)
-    console.log(car);
+    cars.copyCar(car);
     $state.go('tabsController.results.detailView', {id: car.id});
   };
 
@@ -77,16 +71,13 @@ angular.module('app.controllers', [])
         $scope.allLoaded = true;
       }
       page++;
-      console.log(items);
       $scope.cars = $scope.cars.concat(items);
-      console.log($scope.cars);
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
   };
 
   $scope.$on('$stateChangeSuccess', function() {
     page = 0;
-    console.log("inside ResultsCtrl");
     $scope.loadMore();
   });
 
@@ -115,7 +106,6 @@ angular.module('app.controllers', [])
         console.log(res);
         $scope.carImages = $scope.openedCar.detailImages.split(';');
       })
-      console.log($scope.openedCar);
     } else {
       console.log("Resolved Car Details from Service!");
       $scope.carImages = $scope.openedCar.detailImages.split(';');
@@ -182,8 +172,6 @@ angular.module('app.controllers', [])
       $state.go('premium');
     };
   };
-
-  console.log("Welcome to detailView: " + $scope.openedCar.title);
 })
 
   .controller('criteriasCtrl', function($scope, $ionicModal, ionicToast, criterias) {
@@ -201,7 +189,6 @@ angular.module('app.controllers', [])
   };
 
   $scope.updateCriteria = function(criteria) {
-    console.log(criteria);
     criterias.update({
       id: criteria.id,
       tags: criteria.tags,
@@ -324,7 +311,6 @@ angular.module('app.controllers', [])
       password: $scope.user.password
     })
       .then(function(response) {
-      console.log(response.data);
       $auth.login({
         email: $scope.user.email,
         password: $scope.user.password
@@ -369,7 +355,6 @@ angular.module('app.controllers', [])
 
   $scope.$watch(function () { return payments.paid },function(newVal,oldVal){
     if(oldVal!==newVal){
-      console.log('$scope.paid has changed!');
       $scope.paid = payments.paid;
     };
   });
@@ -389,24 +374,17 @@ angular.module('app.controllers', [])
 
   $timeout(function() {
     payments.getPaymentPackages().then(function(){
-      console.log(payments.paymentPackages);
     });
     users.getLoggedInUser();
   }, 0);
 
   $scope.setPaymentPackage = function(p) {
     $scope.activePaymentPackage = p;
-    console.log("activePaymentPackage set to: ");
-    console.log($scope.activePaymentPackage);
   };
 
   $scope.doCheckout = function(token) {
     $scope.payParams.token = token;
     $scope.payParams.activePlan = $scope.activePaymentPackage;
-    console.log("Got Stripe token: ");
-    console.log(token);
-    console.log("Got PaymentPackage.id: " + $scope.activePaymentPackage.id);
-    console.log($scope.payParams);
 
     payments.sendStripeToken($scope.activePaymentPackage.id, token).then(function(){
       ionicToast.show('CMM Premium activated.', 'bottom', false, 5000);

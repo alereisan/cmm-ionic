@@ -1,7 +1,12 @@
-<ion-view title="Premium" id="page13" style="background-color: #F5F5F5;">
+<ion-view title="Premium" id="page13">
   <ion-content padding="true" class="has-header">
     <h1>CMM Premium</h1>
-    <p>0 of 5 monthly free connections left. 
+    <p ng-if="currentUser.remainingLicenseDuration == 0" >
+      <span>Free Car-Contact-Clicks:</span>
+      <strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} of 5 used</strong>
+    </p>
+    <p>Remaining License Duration: <strong>{{currentUser.remainingLicenseDuration}} days</strong></p>
+    <p>Subscriber: {{currentUser.subscriber}}</p>
     <div id="premium-markdown9" style="color:#000000;">
       <h4>Be ahead of your competition!</h4>
       <p>Receive <strong>unlimited Car Results</strong> from several Car Markets, within your area.</p>

@@ -15,7 +15,6 @@ angular.module('app.routes', [])
     resolve: {
       loginRequired: loginRequired,
       criteriaPromise: ['criterias', function(criterias){
-        console.log("Inside criteriaPromise");
         return criterias.getList();
       }]
     },
