@@ -61,7 +61,6 @@ angular.module('app.services', [])
 
     o.incrementCarClick = function(carId) {
       return $http.post(url + '/carclick/save', carId).success(function(data) {
-
       });
     };
 

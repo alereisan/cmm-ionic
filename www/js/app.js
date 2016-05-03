@@ -21,3 +21,7 @@ angular.module('app', ['ionic','ionic.service.core', 'satellizer', 'ionic-toast'
     }
   });
 })
+
+  .config(function($ionicConfigProvider) {
+  $ionicConfigProvider.tabs.position('top');
+})
