@@ -12,7 +12,7 @@ angular.module('app.services', [])
       criterias: []
     };
 
-    var url = "http://52.29.189.227:8080";
+    var url = "http://185.101.93.12:8080";
 
     o.getList = function() {
       return $http.get(url + '/criteria/list').success(function(data) {
@@ -57,7 +57,7 @@ angular.module('app.services', [])
       openedCar: []
     };
 
-    var url = "http://52.29.189.227:8080";
+    var url = "http://185.101.93.12:8080";
 
     o.incrementCarClick = function(carId) {
       return $http.post(url + '/carclick/save', carId).success(function(data) {
@@ -93,7 +93,7 @@ angular.module('app.services', [])
       currentUser: []
     };
 
-    var url = "http://52.29.189.227:8080";
+    var url = "http://185.101.93.12:8080";
 
     o.getLoggedInUser = function() {
       return $http.get(url + '/user/loggedinuser').success(function(data) {
@@ -116,7 +116,7 @@ angular.module('app.services', [])
       stripePublishable: []
     };
 
-    var url = "http://52.29.189.227:8080";
+    var url = "http://185.101.93.12:8080";
 
     o.getPaymentPackages = function() {
       return $http.get(url + '/paymentpackage/list').success(function(data) {
