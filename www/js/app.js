@@ -7,25 +7,25 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', [
   'ionic',
-  'ionic.service.core', 
-  'satellizer', 
-  'ionic-toast', 
-  'stripe.checkout', 
-  'ngCookies', 
-  'app.controllers.splitted', 
+  'ionic.service.core',
+  'satellizer',
+  'ionic-toast',
+  'stripe.checkout',
+  'ngCookies',
+  'app.controllers.splitted',
   'app.services.splitted',
-  'app.controllers', 
-  'app.routes', 
-  'app.services', 
-  'app.directives', 
-  'app.auth', 
-  'ui.scroll', 
-  'ui.scroll.jqlite', 
-  'pascalprecht.translate', 
+  'app.controllers',
+  'app.routes',
+  'app.services',
+  'app.directives',
+  'app.auth',
+  'ui.scroll',
+  'ui.scroll.jqlite',
+  'pascalprecht.translate',
   'app.translations'
 ])
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, users) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -37,6 +37,27 @@ angular.module('app', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+  });
+
+  var push = new Ionic.Push({
+    "debug": true,
+    "onNotification": function(notification) {
+      var payload = notification.payload;
+      console.log(notification, payload);
+    },
+    "onRegister": function(data) {
+      console.log(data.token);
+      console.log("Registering...");
+    }
+  });
+
+  push.register(function(token) {
+    // Log out your device token (Save this!)
+    console.log("Got Token:",token.token);
+    // Send Push to backend
+    users.sendDeviceToken({
+      token: token.token
+    });
   });
 })
 
