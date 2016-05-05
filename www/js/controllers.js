@@ -391,6 +391,12 @@ angular.module('app.controllers', [])
     });
   };
 
+  $scope.cancelSubscription = function() {
+    payments.cancelSubscription().then(function(res) {
+      $scope.currentUser.subscriber = false;
+    });
+  };
+
 })
 
   .controller('addCtrl', function($scope) {

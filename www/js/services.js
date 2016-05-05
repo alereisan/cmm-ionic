@@ -137,6 +137,10 @@ angular.module('app.services', [])
       });
     };
 
+    o.cancelPayment = function(id) {
+      return $http.post(url + '/cancelPayment/' + id);
+    };
+
     return o;
   }])
 
