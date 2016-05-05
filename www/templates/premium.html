@@ -1,19 +1,19 @@
 <ion-view title="Premium" id="page13">
   <ion-content padding="true" class="has-header">
     <h1>CMM Premium</h1>
-    <p ng-if="currentUser.remainingLicenseDuration == 0" >
+    <p ng-if="currentUser.remainingLicenseDuration == 0 && !currentUser.subscriber" >
       <span>Free Car-Contact-Clicks:</span>
       <strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} of 5 used</strong>
     </p>
-    <p>Remaining License Duration: <strong>{{currentUser.remainingLicenseDuration}} days</strong></p>
-    <p>Subscriber: {{currentUser.subscriber}}</p>
+    <p ng-if="!currentUser.subscriber">Remaining License Duration: <strong>{{currentUser.remainingLicenseDuration}} days</strong></p>
+    <p ng-if="currentUser.subscriber" class="greentext">CMM Premium Subscription active.</p>
     <div id="premium-markdown9" style="color:#000000;">
       <h4>Be ahead of your competition!</h4>
       <p>Receive <strong>unlimited Car Results</strong> from several Car Markets, within your area.</p>
     </div>
     <div class="list">
       <div class="item item-divider">Subscription License</div>
-      <button ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
+      <button ng-if="!currentUser.subscriber" ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
               data-key="{{stripePublishable.stripePublishable}}"
               data-name="{{p.name}}"
               data-email="{{currentUser.email}}"
@@ -23,11 +23,12 @@
               data-image="{{p.image}}"
               data-amount="{{p.price}}"
               data-currency="eur"
-              class="button button-balanced  button-block">
+              class="button button-balanced button-block">
         {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}/Month
       </button>
-      <div class="item item-divider">Fixed Price Licenses</div>
-      <button ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
+      <button ng-if="currentUser.subscriber" ng-click="cancelSubscription()" class="button button-assertive button-block">Cancel Subscription</button>
+      <div ng-if="!currentUser.subscriber" class="item item-divider">Fixed Price Licenses</div>
+      <button ng-if="!currentUser.subscriber" ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
               data-key="{{stripePublishable.stripePublishable}}"
               data-name="{{p.name}}"
               data-email="{{currentUser.email}}"

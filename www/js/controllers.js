@@ -364,7 +364,7 @@ angular.module('app.controllers', [])
 
 })
 
-  .controller('premiumCtrl', function($scope, payments, users, $timeout, ionicToast) {
+  .controller('premiumCtrl', function($scope, payments, users, $timeout, ionicToast, $ionicPopup) {
 
   $scope.paymentPackages = payments.paymentPackages;
   $scope.activePaymentPackage = [];
@@ -392,8 +392,20 @@ angular.module('app.controllers', [])
   };
 
   $scope.cancelSubscription = function() {
-    payments.cancelSubscription().then(function(res) {
-      $scope.currentUser.subscriber = false;
+
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Cancel Subscription',
+      template: 'Are you sure you want to cancel your CMM Premium Subscription?'
+    });
+
+    confirmPopup.then(function(res) {
+      if(res) {
+        payments.cancelSubscription().then(function(res) {
+          $scope.currentUser.subscriber = false;
+        });
+      } else {
+        console.log('You are not sure');
+      }
     });
   };
 
