@@ -137,8 +137,8 @@ angular.module('app.services', [])
       });
     };
 
-    o.cancelPayment = function(id) {
-      return $http.post(url + '/cancelPayment/' + id);
+    o.cancelSubscription = function() {
+      return $http.post(url + '/payment/cancel');
     };
 
     return o;

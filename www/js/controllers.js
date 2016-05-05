@@ -388,6 +388,7 @@ angular.module('app.controllers', [])
 
     payments.sendStripeToken($scope.activePaymentPackage.id, token).then(function(){
       ionicToast.show('CMM Premium activated.', 'bottom', false, 5000);
+      $scope.currentUser.subscriber = true;
     });
   };
 
