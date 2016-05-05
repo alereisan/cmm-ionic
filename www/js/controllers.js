@@ -1,5 +1,7 @@
 angular.module('app.controllers', [])
 
+// bigger AngularJS controllers have been splitted to /controllers
+
   .controller('addCtrl', function($scope, $state) {
 
 })
