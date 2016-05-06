@@ -38,11 +38,6 @@ angular.module('app', [
       StatusBar.styleDefault();
     }
 
-    var carDealPopup = $ionicPopup.confirm({
-      title: 'Schnäppchen gefunden!',
-      template: 'Ein gerade eingestelltes Auto passt zu deinen Kriterien. Schnäppchen anzeigen?'
-    });
-
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {
@@ -50,7 +45,10 @@ angular.module('app', [
         console.log("New Notification: ");
         console.log(notification, payload);
         // Show confirm Popup - if user is currently online
-        carDealPopup.then(function(res) {
+        $ionicPopup.confirm({
+          title: 'Schnäppchen gefunden!',
+          template: 'Ein gerade eingestelltes Auto passt zu deinen Kriterien. Schnäppchen anzeigen?'
+        }).then(function(res) {
           if(res) {
             // Go to car deal
             $state.go('tabsController.results.detailView', {id: 1});
