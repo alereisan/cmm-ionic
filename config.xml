@@ -74,5 +74,8 @@
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
   <plugin name="cordova-plugin-inappbrowser" spec="1.1.0"/>
+  <plugin name="phonegap-plugin-push" spec="1.6.0">
+    <variable name="SENDER_ID" value="170853427136" />
+  </plugin>
   <access origin="*" />
 </widget>

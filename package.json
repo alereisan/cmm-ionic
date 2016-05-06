@@ -24,7 +24,7 @@
     "ionic-plugin-keyboard",
     {
       "variables": {
-        "SENDER_ID": "GCM_PROJECT_NUMBER"
+        "SENDER_ID": "170853427136"
       },
       "locator": "phonegap-plugin-push",
       "id": "phonegap-plugin-push"

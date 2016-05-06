@@ -25,3 +25,13 @@ Tested with nodejs http-server, apache, and python SimpleHTTPServer
 
 
 bower install --save-dev ionic-platform-web-client
+
+## Ionic Upload
+```
+ionic upload --note "Push notifications"
+```
+
+## Ionic Package
+```
+ionic package build android
+```
