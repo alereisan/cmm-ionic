@@ -25,7 +25,7 @@ angular.module('app', [
   'app.translations'
 ])
 
-  .run(function($ionicPlatform, users) {
+  .run(function($ionicPlatform, users, $ionicPopup, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -38,12 +38,26 @@ angular.module('app', [
       StatusBar.styleDefault();
     }
 
+    var carDealPopup = $ionicPopup.confirm({
+      title: 'Schnäppchen gefunden!',
+      template: 'Ein gerade eingestelltes Auto passt zu deinen Kriterien. Schnäppchen anzeigen?'
+    });
+
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {
         var payload = notification.payload;
         console.log("New Notification: ");
         console.log(notification, payload);
+        // Show confirm Popup - if user is currently online
+        carDealPopup.then(function(res) {
+          if(res) {
+            // Go to car deal
+            $state.go('tabsController.results.detailView', {id: 1});
+          } else {
+            // Do not go to car deal
+          }
+        });
       },
       "onRegister": function(data) {
         console.log(data.token);
@@ -71,5 +85,5 @@ angular.module('app', [
 })
 
   .config(function($ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position('top');
-  })
+  $ionicConfigProvider.tabs.position('top');
+})
