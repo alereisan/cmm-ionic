@@ -8,7 +8,7 @@
     sansen
   </author>
   <content src="index.html"/>
-  <allow-navigation href="http://*/*" />
+  <allow-navigation href="http://*/*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -16,6 +16,7 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="android-build-tool" value="gradle"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -74,9 +75,8 @@
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
   <plugin name="cordova-plugin-inappbrowser" spec="1.1.0"/>
-  <preference name="android-build-tool" value="gradle" />
   <plugin name="phonegap-plugin-push" source="npm">
-    <param name="SENDER_ID" value="170853427136" />
+    <param name="SENDER_ID" value="170853427136"/>
   </plugin>
-  <access origin="*" />
+  <access origin="*"/>
 </widget>

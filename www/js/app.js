@@ -42,6 +42,7 @@ angular.module('app', [
       "debug": true,
       "onNotification": function(notification) {
         var payload = notification.payload;
+        console.log("New Notification: ");
         console.log(notification, payload);
       },
       "onRegister": function(data) {
@@ -69,7 +70,6 @@ angular.module('app', [
   });
 })
 
-
   .config(function($ionicConfigProvider) {
-  $ionicConfigProvider.tabs.position('top');
-})
+    $ionicConfigProvider.tabs.position('top');
+  })

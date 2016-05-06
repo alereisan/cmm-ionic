@@ -15,7 +15,7 @@ angular.module('app.services.splitted').factory('users', [
     };
 
     o.sendDeviceToken = function(token) {
-      return $http.post(url + '/notification/saveAndroidToken', token).success(function(data) {
+      return $http.post(url + '/notification/saveToken', token).success(function(data) {
         
       });
     };
