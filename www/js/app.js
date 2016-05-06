@@ -38,6 +38,8 @@ angular.module('app', [
       StatusBar.styleDefault();
     }
 
+    console.log("The device UUID is: ", window.device.uuid );
+
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {
@@ -51,7 +53,7 @@ angular.module('app', [
         }).then(function(res) {
           if(res) {
             // Go to car deal
-            $state.go('tabsController.results.detailView', {id: payload.car_id});
+            $state.go('tabsController.results.detailView', {id: payload.id});
           } else {
             // Do not go to car deal
           }
