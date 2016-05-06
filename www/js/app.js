@@ -67,11 +67,9 @@ angular.module('app', [
       });
     });
   });
-});
-
-
 })
 
+
   .config(function($ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position('top');
-  })
+  $ionicConfigProvider.tabs.position('top');
+})
