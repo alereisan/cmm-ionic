@@ -7,21 +7,13 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
   '$ionicPopup',
   '$state',
   'users',
-  function($scope, $window, $location, $rootScope, $auth, $ionicPopup, $state, users) {
+  function($scope, $window, $location, $rootScope, $auth, $ionicPopup, $state) {
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
         .then(function(response) {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        push.register(function(token) {
-          // Log out your device token (Save this!)
-          console.log("Got Token:",token.token);
-          // Send Push to backend
-          users.sendDeviceToken({
-            token: token.token
-          });
-        });
         $state.go('tabsController.results');
         $ionicPopup.alert({
           title: 'Success',
@@ -43,17 +35,6 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
       password: $scope.user.password
     };
 
-    var push = new Ionic.Push({
-      "debug": true,
-      "onNotification": function(notification) {
-        var payload = notification.payload;
-        console.log(notification, payload);
-      },
-      "onRegister": function(data) {
-        console.log(data.token);
-      }
-    });
-
     $scope.login = function() {
       $auth.login({
         email: $scope.user.email,
@@ -61,14 +42,6 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
       }).then(function(response) {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        push.register(function(token) {
-          // Log out your device token (Save this!)
-          console.log("Got Token:",token.token);
-          // Send Push to backend
-          users.sendDeviceToken({
-            token: token.token
-          });
-        });
         $state.go('tabsController.results');
       }).catch(function(response) {
         $ionicPopup.alert({

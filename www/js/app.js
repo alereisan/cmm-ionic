@@ -37,10 +37,41 @@ angular.module('app', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    var push = new Ionic.Push({
+      "debug": true,
+      "onNotification": function(notification) {
+        var payload = notification.payload;
+        console.log(notification, payload);
+      },
+      "onRegister": function(data) {
+        console.log(data.token);
+      },
+      "pluginConfig": {
+        "ios": {
+          "badge": true,
+          "sound": true
+        },
+        "android": {
+          "iconColor": "#343434"
+        }
+      }
+    });
+
+    push.register(function(token) {
+      console.log("Device token:",token.token);
+      push.saveToken(token);  // persist the token in the Ionic Platform
+      // Send Push to backend
+      users.sendDeviceToken({
+        token: token.token
+      });
+    });
   });
+});
+
 
 })
 
   .config(function($ionicConfigProvider) {
-  $ionicConfigProvider.tabs.position('top');
-})
+    $ionicConfigProvider.tabs.position('top');
+  })

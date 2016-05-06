@@ -8,18 +8,6 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
   'users',
   function($scope, $auth, $ionicPopup, $state, $window, $rootScope, users) {
 
-    var push = new Ionic.Push({
-      "debug": true,
-      "onNotification": function(notification) {
-        var payload = notification.payload;
-        console.log(notification, payload);
-      },
-      "onRegister": function(data) {
-        console.log(data.token);
-        console.log("Registering...");
-      }
-    });
-
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
@@ -29,14 +17,6 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
         .then(function(response) {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        push.register(function(token) {
-          // Log out your device token (Save this!)
-          console.log("Got Token:",token.token);
-          // Send Push to backend
-          users.sendDeviceToken({
-            token: token.token
-          });
-        });
         $state.go('tabsController.results');
         $ionicPopup.alert({
           title: 'Success',
@@ -71,14 +51,6 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
         })
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        push.register(function(token) {
-          // Log out your device token (Save this!)
-          console.log("Got Token:",token.token);
-          // Send Push to backend
-          users.sendDeviceToken({
-            token: token.token
-          });
-        });
         $ionicPopup.alert({
           title: 'Success',
           content: 'You have successfully signed up!'
