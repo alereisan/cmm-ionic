@@ -38,6 +38,10 @@ angular.module('app', [
       StatusBar.styleDefault();
     }
 
+    var device = ionic.Platform.device();
+    console.log("Device: ", device);
+    console.log(device.uuid);
+
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {

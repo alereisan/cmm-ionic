@@ -9,25 +9,7 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
   '$timeout',
   '$window',
   '$auth',
-  function($scope, $ionicModal, $state, ionicToast, criterias, cars, $cookies, $timeout, $window, $auth, $cordovaDevice) {
-
-    document.addEventListener("deviceready", function () {
-
-      var device = $cordovaDevice.getDevice();
-
-      var cordova = $cordovaDevice.getCordova();
-
-      var model = $cordovaDevice.getModel();
-
-      var platform = $cordovaDevice.getPlatform();
-
-      $scope.uuid = $cordovaDevice.getUUID();
-      console.log("The device UUID is: ", uuid );
-
-      var version = $cordovaDevice.getVersion();
-
-    }, false);
-
+  function($scope, $ionicModal, $state, ionicToast, criterias, cars, $cookies, $timeout, $window, $auth) {
 
     $scope.criterias = criterias.criterias;
     $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
