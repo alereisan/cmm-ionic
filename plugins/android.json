@@ -10,9 +10,6 @@
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.cmm505262"
         },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.cmm505262"
-        },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.cmm505262"
         },
@@ -26,6 +23,9 @@
             "PACKAGE_NAME": "com.ionicframework.cmm505262"
         },
         "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.cmm505262"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.cmm505262"
         }
     },
