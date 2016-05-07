@@ -6,6 +6,7 @@
     "ionic-platform-web-client": "^0.7.1"
   },
   "dependencies": {
-    "ionic-toast": "^0.2.0"
+    "ionic-toast": "^0.2.0",
+    "ngCordova": "^0.1.26-alpha"
   }
 }

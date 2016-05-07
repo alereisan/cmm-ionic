@@ -22,7 +22,8 @@ angular.module('app', [
   'ui.scroll',
   'ui.scroll.jqlite',
   'pascalprecht.translate',
-  'app.translations'
+  'app.translations',
+  'ngCordova'
 ])
 
   .run(function($ionicPlatform, users, $ionicPopup, $state) {
