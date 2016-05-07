@@ -25,7 +25,7 @@ angular.module('app', [
   'app.translations'
 ])
 
-  .run(function($ionicPlatform, users, $ionicPopup, $state, $cordovaDevice) {
+  .run(function($ionicPlatform, users, $ionicPopup, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -37,10 +37,6 @@ angular.module('app', [
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-    var uuid = $cordovaDevice.getUUID();
-
-    console.log("The device UUID is: ", uuid );
 
     var push = new Ionic.Push({
       "debug": true,
