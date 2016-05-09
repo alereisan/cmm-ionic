@@ -26,7 +26,7 @@ angular.module('app', [
   'ngCordova'
 ])
 
-  .run(function($ionicPlatform, users, $ionicPopup, $state, $cordovaDevice) {
+  .run(function($ionicPlatform, users, $ionicPopup, $state, $cordovaDevice, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -42,7 +42,7 @@ angular.module('app', [
     var device = $cordovaDevice.getUUID();
     console.log("Device: ", device);
     console.log(device);
-
+    
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {

@@ -83,3 +83,10 @@ form.ng-submitted input.ng-valid + i.icon.error {
 .greentext {
   color: green;
 }
+
+.welcome-bg {
+    background: url(../img/welcome1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}

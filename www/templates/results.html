@@ -15,5 +15,15 @@
       <ion-infinite-scroll ng-if="!allLoaded" on-infinite="loadMore()" distance="1%">
       </ion-infinite-scroll>
     </ion-list>
+    <div ng-if="!cars.length" class="row row-center">
+      <div class="col col-center">
+        {{ 'NO_RESULTS_FOUND' | translate}}
+      </div>
+    </div>
+    <div ng-if="allLoaded" class="row row-center">
+      <div class="col col-center">
+        {{ 'NO_RESULTS_LEFT' | translate}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -29,6 +29,8 @@ angular.module('app.translations', [])
     SETTINGS: 'Settings',
     MENU: 'Menu',
     ADD_CRITERIA: 'Add Criteria',
+    CREATE_CRITERIA: 'Create Criteria',
+    NO_CRITERIA_CREATED: 'No criterias created.',
     ADD_CRITERIA_HEADING: 'Monitor a Car',
     ADD_CRITERIA_PARAGRAPH: 'Create a criteria for a car which you are interested to buy. We will monitor multiple marketplaces near your and let you know when a new car is created matching your criteria.',
     WHICH_CAR: 'Which car are you interested in?',
@@ -44,7 +46,9 @@ angular.module('app.translations', [])
     DIESEL: 'Diesel',
     GASOLINE: 'Gasoline',
     ELECTRO: 'Electro',
-    PULL_TO_REFRESH: 'Pull to refresh...'
+    PULL_TO_REFRESH: 'Pull to refresh...',
+    NO_RESULTS_LEFT: 'No results left, try to add more criterias.',
+    NO_RESULTS_FOUND: 'No results found.'
   });
   $translateProvider.translations('de', {
     TITLE: 'Hallo',
@@ -73,6 +77,8 @@ angular.module('app.translations', [])
     SETTINGS: 'Einstellungen',
     MENU: 'Menü',
     ADD_CRITERIA: 'Kriterium hinzufügen',
+    CREATE_CRITERIA: 'Kriterium erstellen',
+    NO_CRITERIA_CREATED: 'Keine Kriterien erstellt.',
     ADD_CRITERIA_HEADING: 'Automärkte überwachen',
     ADD_CRITERIA_PARAGRAPH: 'Erstelle ein Suchkriterium für ein Auto welches du erwerben möchtest. Wir überwachen diverse Marktplätze und benachrichtigen dich, sobald wir ein Auto finden, welches auf deine eingegebenen Kriterien zutrifft.',
     WHICH_CAR: 'Welches Auto möchtest du erwerben?',
@@ -88,7 +94,9 @@ angular.module('app.translations', [])
     DIESEL: 'Diesel',
     GASOLINE: 'Benzin',
     ELECTRO: 'Elektro',
-    PULL_TO_REFRESH: 'Ziehen zum aktualisieren...'
+    PULL_TO_REFRESH: 'Ziehen zum aktualisieren...',
+    NO_RESULTS_LEFT: 'Keine weiteren Resultate.',
+    NO_RESULTS_FOUND: 'Keine Resultate gefunden.'
   });
   $translateProvider.preferredLanguage('de');
   $translateProvider.fallbackLanguage('de');

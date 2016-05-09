@@ -2,17 +2,18 @@
   <ion-content padding="false" class="has-header">
     <ion-list>
       <ion-item ng-repeat="criteria in criterias" ng-click="openEditModal(criteria)">
-        <strong>{{criteria.tags}}:</strong> {{criteria.maxPrice | currency}} · 0-{{criteria.maxKmState | number}}KM · {{criteria.minBuildYear}}
+        <strong>{{criteria.tags}}</strong>
+        <span style="display: none">{{criteria.maxPrice | currency}} · 0-{{criteria.maxKmState | number}}KM · {{criteria.minBuildYear}}</span>
       </ion-item>
     </ion-list>
     <div ng-if="!criterias.length" class="row row-center">
       <div class="col col-center">
-        No criterias created.
+        {{ 'NO_CRITERIA_CREATED' | translate }}
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <button class="button button-block button-balanced" ui-sref="tabsController.add">Create new Criteria</button>
+        <button class="button button-block button-balanced" ui-sref="tabsController.add">{{ 'CREATE_CRITERIA' | translate }}</button>
       </div>
     </div>
   </ion-content>

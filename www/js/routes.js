@@ -28,7 +28,10 @@ angular.module('app.routes', [])
         templateUrl: 'templates/results.html',
         controller: 'resultsCtrl',
         resolve: {
-          loginRequired: loginRequired
+          loginRequired: loginRequired,
+          carsPromise: ['cars', function(cars) {
+            return cars.getResults(0);
+          }]
         }
       }
     }
@@ -68,6 +71,12 @@ angular.module('app.routes', [])
         }
       }
     }
+  })
+
+  .state('welcome', {
+    url: '/welcome',
+    templateUrl: 'templates/welcome.html',
+    controller: 'welcomeCtrl'
   })
 
     .state('login', {
@@ -145,12 +154,15 @@ angular.module('app.routes', [])
     return deferred.promise;
   }
 
-  function loginRequired($q, $location, $auth) {
+  function loginRequired($q, $location, $auth, $state) {
     var deferred = $q.defer();
     if ($auth.isAuthenticated()) {
+      console.log("user is logged in...");
       deferred.resolve();
     } else {
-      $location.path('/login');
+      console.log("user is not logged in.");
+      $location.path('/welcome');
+      //$state.go('welcome');
     }
     return deferred.promise;
   }
