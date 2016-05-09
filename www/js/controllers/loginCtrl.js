@@ -81,7 +81,7 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
           push.saveToken(token);  // persist the token in the Ionic Platform
           // save token localStorage
           $window.localStorage.deviceToken = token.token;
-          // Send Push to backend
+          // Send Push token to backend
           users.sendDeviceToken({
             token: token.token
           });
