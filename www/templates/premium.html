@@ -13,12 +13,12 @@
     </div>
     <div class="list">
       <div class="item item-divider">Subscription License</div>
-      <button ng-if="!currentUser.subscriber" ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
+      <button ng-if="!currentUser.subscriber" ng-disabled="currentUser.remainingLicenseDuration > 0" ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
               data-key="{{stripePublishable.stripePublishable}}"
               data-name="{{p.name}}"
               data-email="{{currentUser.email}}"
               data-description="{{p.description}}"
-              data-bitcoin="true"
+              data-bitcoin="false"
               data-locale="auto"
               data-image="{{p.image}}"
               data-amount="{{p.price}}"

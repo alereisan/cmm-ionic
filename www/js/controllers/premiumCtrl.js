@@ -14,9 +14,12 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
   $scope.stripePublishable = payments.stripePublishable;
 
   $timeout(function() {
-    payments.getPaymentPackages().then(function(){
+    payments.getPaymentPackages().then(function(res){
+      console.log(res);
     });
-    users.getLoggedInUser();
+    users.getLoggedInUser().then(function(res) {
+      console.log("Resolved LoggedInUser: ", res);
+    });
   }, 0);
 
   $scope.setPaymentPackage = function(p) {
@@ -29,7 +32,11 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
 
     payments.sendStripeToken($scope.activePaymentPackage.id, token).then(function(){
       ionicToast.show('CMM Premium activated.', 'bottom', false, 5000);
-      $scope.currentUser.subscriber = true;
+      if($scope.activePaymentPackage.subscription) {
+        $scope.currentUser.subscriber = true;
+      } else {
+        $scope.currentUser.remainingLicenseDuration = ($scope.activePaymentPackage.licenseDuration * 30);
+      }
     });
   };
 
