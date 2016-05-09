@@ -72,4 +72,11 @@ angular.module('app.controllers.splitted').controller('welcomeCtrl', [
       console.log(users.deviceUUID);
     }, 3000);
 
+    $scope.sendDeviceToken = function() {
+      console.log("Device Token: ", $window.localStorage.deviceToken);
+      users.sendDeviceToken({
+        token: $window.localStorage.deviceToken
+      });
+    }
+
   }]);

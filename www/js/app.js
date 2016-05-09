@@ -26,7 +26,7 @@ angular.module('app', [
   'ngCordova'
 ])
 
-  .run(function($ionicPlatform, users, $ionicPopup, $state, $cordovaDevice, $rootScope) {
+  .run(function($ionicPlatform, users, $ionicPopup, $state, $cordovaDevice, $rootScope, $window) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -42,7 +42,7 @@ angular.module('app', [
     var device = $cordovaDevice.getUUID();
     console.log("Device: ", device);
     console.log(device);
-    
+
     var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {
@@ -79,6 +79,8 @@ angular.module('app', [
     push.register(function(token) {
       console.log("Device token:",token.token);
       push.saveToken(token);  // persist the token in the Ionic Platform
+      // save token localStorage
+      $window.localStorage.deviceToken = token.token;
       // Send Push to backend
       users.sendDeviceToken({
         token: token.token

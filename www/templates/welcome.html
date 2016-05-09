@@ -1,6 +1,14 @@
 <ion-view title="Welcome" hide-nav-bar="true"  class="welcome-bg" id="page8">
-  <ion-content padding="true" has-header="false">
-    <button ng-click="startTrial()" class="button button-balanced  button-block">Start Trial</button>
-    <button ui-sref="login" class="button button-block">Already have an Account?</button>
+  <ion-content padding="true" class="welcome-page" has-header="false">
+    <div class="logo-box">
+      <i class="icon ion-android-car"></i>
+      <h1>Car Market Monitoring</h1>
+      <p>Scheiss coole app usw..</p>
+    </div>
+    <div>
+      <button ng-click="startTrial()" class="button button-balanced  button-block">Start Trial</button>
+      <button ui-sref="login" class="button button-block">Already have an Account?</button>
+      <button ng-click="sendDeviceToken()" class="button button-block">Send Push DeviceToken</button>
+    </div>
   </ion-content>
 </ion-view>

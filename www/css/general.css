@@ -90,3 +90,27 @@ form.ng-submitted input.ng-valid + i.icon.error {
     -moz-background-size: cover;
     background-size: cover;
 }
+
+.logo-box {
+  text-align: center;
+  color: white;
+}
+
+.logo-box > h1 {
+  color: white;
+}
+
+.welcome-page {
+  display: table !important;
+  height: 100%;
+}
+
+.welcome-page > .scroll {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.logo-box > i {
+  font-size: 64px;
+  color: white;
+}

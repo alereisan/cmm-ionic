@@ -20,12 +20,16 @@ angular.module('app.services.splitted').factory('users', [
       });
     };
 
+    o.saveDeviceToken = function(token) {
+      return o.deviceToken = token;
+    };
+
     o.startTrial = function(deviceId) {
       return $http.post(url + '/auth/trialLogin', deviceId).success(function(data) {
         console.log("Response from starTrial: ", data);
       });
     };
-    
+
     o.setDeviceUUID = function(deviceUUID) {
       o.deviceUUID = deviceUUID;
     }

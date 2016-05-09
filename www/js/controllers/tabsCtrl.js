@@ -42,17 +42,21 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
       if(!criteria.tags || criteria.tags === '') {
         ionicToast.show('Please complete the form.', 'bottom', false, 5000);
         return;
+      } else if($scope.criterias.length >= 5) {
+        ionicToast.show('Upgrade for unlimited criterias.', 'bottom', false, 5000);
+        $state.go('premium');
+      } else {
+        criterias.create({
+          tags: criteria.tags,
+          maxPrice: criteria.maxPrice,
+          maxKmState: criteria.maxKmState,
+          minBuildYear: criteria.minBuildYear,
+          diesel: criteria.diesel
+        }).then(function(res){
+          $state.go('tabsController.criterias');
+          $scope.modal.hide();
+          ionicToast.show('Criteria created.', 'bottom', false, 5000);
+        })
       }
-      criterias.create({
-        tags: criteria.tags,
-        maxPrice: criteria.maxPrice,
-        maxKmState: criteria.maxKmState,
-        minBuildYear: criteria.minBuildYear,
-        diesel: criteria.diesel
-      }).then(function(res){
-        $state.go('tabsController.criterias');
-        $scope.modal.hide();
-        ionicToast.show('Criteria created.', 'bottom', false, 5000);
-      });
     };
   }]);
