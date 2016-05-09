@@ -39,53 +39,8 @@ angular.module('app', [
       StatusBar.styleDefault();
     }
 
-    var device = $cordovaDevice.getUUID();
-    console.log("Device: ", device);
-    console.log(device);
+    //var device = $cordovaDevice.getUUID();
 
-    var push = new Ionic.Push({
-      "debug": true,
-      "onNotification": function(notification) {
-        var payload = notification.payload;
-        console.log("New Notification: ");
-        console.log(notification, payload);
-        // Show confirm Popup - if user is currently online
-        $ionicPopup.confirm({
-          title: 'Schnäppchen gefunden!',
-          template: 'Ein gerade eingestelltes Auto passt zu deinen Kriterien. Schnäppchen anzeigen?'
-        }).then(function(res) {
-          if(res) {
-            // Go to car deal
-            $state.go('tabsController.results.detailView', {id: payload.id});
-          } else {
-            // Do not go to car deal
-          }
-        });
-      },
-      "onRegister": function(data) {
-        console.log(data.token);
-      },
-      "pluginConfig": {
-        "ios": {
-          "badge": true,
-          "sound": true
-        },
-        "android": {
-          "iconColor": "#343434"
-        }
-      }
-    });
-
-    push.register(function(token) {
-      console.log("Device token:",token.token);
-      push.saveToken(token);  // persist the token in the Ionic Platform
-      // save token localStorage
-      $window.localStorage.deviceToken = token.token;
-      // Send Push to backend
-      users.sendDeviceToken({
-        token: token.token
-      });
-    });
   });
 })
 
