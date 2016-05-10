@@ -1,4 +1,14 @@
 {
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-push@1.6.0"
+        },
+        "is_top_level": true,
+        "variables": {
+            "SENDER_ID": "170853427136"
+        }
+    },
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
@@ -7,11 +17,18 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-device": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/apache/cordova-plugin-whitelist.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-device@~1.1.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser@1.1.0"
         },
         "is_top_level": true,
         "variables": {}
@@ -32,36 +49,18 @@
         "is_top_level": true,
         "variables": {}
     },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "ionic-plugin-keyboard": {
         "source": {
             "type": "registry",
             "id": "ionic-plugin-keyboard"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-inappbrowser": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-inappbrowser@1.1.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "phonegap-plugin-push": {
-        "source": {
-            "type": "registry",
-            "id": "phonegap-plugin-push@1.6.0"
-        },
-        "is_top_level": true,
-        "variables": {
-            "SENDER_ID": "170853427136"
-        }
-    },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device"
         },
         "is_top_level": true,
         "variables": {}
