@@ -17,34 +17,50 @@
         <li>no ads</li>
       </ul>
     </div>
-    <div class="list">
-      <div class="item item-divider">Subscription License</div>
-      <button ng-if="!currentUser.subscriber" ng-disabled="currentUser.remainingLicenseDuration > 0" ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
-              data-key="{{stripePublishable.stripePublishable}}"
-              data-name="{{p.name}}"
-              data-email="{{currentUser.email}}"
-              data-description="{{p.description}}"
-              data-bitcoin="false"
-              data-locale="auto"
-              data-image="{{p.image}}"
-              data-amount="{{p.price}}"
-              data-currency="eur"
-              class="button button-balanced button-block">
-        {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}/Month
-      </button>
-      <button ng-if="currentUser.subscriber" ng-click="cancelSubscription()" class="button button-assertive button-block">Cancel Subscription</button>
-      <div ng-if="!currentUser.subscriber" class="item item-divider">Fixed Price Licenses</div>
-      <button ng-if="!currentUser.subscriber" ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
-              data-key="{{stripePublishable.stripePublishable}}"
-              data-name="{{p.name}}"
-              data-email="{{currentUser.email}}"
-              data-description="{{p.description}}"
-              data-image="{{p.image}}"
-              data-amount="{{p.price}}"
-              data-currency="eur"
-              class="button button-positive  button-block">
-        {{p.name}}: {{ (p.price / 100) | currency:"€":2 }}
-      </button>
-    </div>
+
+    <h3>Products</h3>
+    <button ng-show="!products" ng-click="loadProducts()" class="button button-block button-balanced">
+      <i class="ion-arrow-down-c"></i> Load Products
+    </button>
+    <button ng-repeat="product in products" ng-click="buy(product.productId)" class="button button-block button-positive">
+      {{product.title}} - {{product.price}}
+    </button>
+    <h3>Restore Purchases</h3>
+    <button ng-click="restore()" class="button button-block button-balanced">
+      <i class="ion-refresh"></i> Restore
+    </button>
+    
+    
+    <!-- Stripe Payment Buttons
+<div class="list">
+<div class="item item-divider">Subscription License</div>
+<button ng-if="!currentUser.subscriber" ng-disabled="currentUser.remainingLicenseDuration > 0" ng-repeat="p in paymentPackages | filter:{subscription:true} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
+data-key="{{stripePublishable.stripePublishable}}"
+data-name="{{p.name}}"
+data-email="{{currentUser.email}}"
+data-description="{{p.description}}"
+data-bitcoin="false"
+data-locale="auto"
+data-image="{{p.image}}"
+data-amount="{{p.price}}"
+data-currency="eur"
+class="button button-balanced button-block">
+{{p.name}}: {{ (p.price / 100) | currency:"€":2 }}/Month
+</button>
+<button ng-if="currentUser.subscriber" ng-click="cancelSubscription()" class="button button-assertive button-block">Cancel Subscription</button>
+<div ng-if="!currentUser.subscriber" class="item item-divider">Fixed Price Licenses</div>
+<button ng-if="!currentUser.subscriber" ng-repeat="p in paymentPackages | filter:{subscription:false} | orderBy:'position'" ng-click="setPaymentPackage(p)" stripe-checkout="doCheckout"
+data-key="{{stripePublishable.stripePublishable}}"
+data-name="{{p.name}}"
+data-email="{{currentUser.email}}"
+data-description="{{p.description}}"
+data-image="{{p.image}}"
+data-amount="{{p.price}}"
+data-currency="eur"
+class="button button-positive  button-block">
+{{p.name}}: {{ (p.price / 100) | currency:"€":2 }}
+</button>
+</div>
+-->
   </ion-content>
 </ion-view>
