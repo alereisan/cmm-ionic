@@ -27,6 +27,13 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.cmm505262"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.cmm505262"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "170853427136",
+            "PACKAGE_NAME": "com.ionicframework.cmm505262"
         }
     },
     "dependent_plugins": {}
