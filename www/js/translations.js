@@ -48,7 +48,20 @@ angular.module('app.translations', [])
     ELECTRO: 'Electro',
     PULL_TO_REFRESH: 'Pull to refresh...',
     NO_RESULTS_LEFT: 'No results left, try to add more criterias.',
-    NO_RESULTS_FOUND: 'No results found.'
+    NO_RESULTS_FOUND: 'No results found.',
+    LOGIN_WITH_FACEBOOK: 'Login with Facebook',
+    LOGIN_WITH_GOOGLE: 'Login with Google',
+    LOGIN_WITH_EMAIL: 'Login with E-Mail',
+    EMAIL: 'E-Mail',
+    PASSWORD: 'Password',
+    LOGIN: 'Login',
+    OR_CREATE_ACCOUNT: 'Or create an account',
+    YOU_ARE_LOGGED_IN: 'You are logged in!',
+    LOGOUT: 'Logout',
+    SIGNUP_WITH_FACEBOOK: 'Signup with Facebook',
+    SIGNUP_WITH_GOOGLE: 'Signup with Google',
+    SIGNUP_WITH_EMAIL: 'Signup with E-Mail',
+    SIGNUP: 'Signup'
   });
   $translateProvider.translations('de', {
     TITLE: 'Hallo',
@@ -96,7 +109,20 @@ angular.module('app.translations', [])
     ELECTRO: 'Elektro',
     PULL_TO_REFRESH: 'Ziehen zum aktualisieren...',
     NO_RESULTS_LEFT: 'Keine weiteren Resultate.',
-    NO_RESULTS_FOUND: 'Keine Resultate gefunden.'
+    NO_RESULTS_FOUND: 'Keine Resultate gefunden.',
+    LOGIN_WITH_FACEBOOK: 'Mit Facebook anmelden',
+    LOGIN_WITH_GOOGLE: 'Mit Google anmelden',
+    LOGIN_WITH_EMAIL: 'Mit E-Mail anmelden',
+    EMAIL: 'E-Mail',
+    PASSWORD: 'Passwort',
+    LOGIN: 'Anmelden',
+    OR_CREATE_ACCOUNT: 'Konto erstellen',
+    YOU_ARE_LOGGED_IN: 'Du bist angemeldet!',
+    LOGOUT: 'Abmelden',
+    SIGNUP_WITH_FACEBOOK: 'Mit Facebook registrieren',
+    SIGNUP_WITH_GOOGLE: 'Mit Google registrieren',
+    SIGNUP_WITH_EMAIL: 'Mit E-Mail registrieren',
+    SIGNUP: 'Registrieren'
   });
   $translateProvider.preferredLanguage('de');
   $translateProvider.fallbackLanguage('de');

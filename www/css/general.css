@@ -103,11 +103,13 @@ form.ng-submitted input.ng-valid + i.icon.error {
 .welcome-page {
   display: table !important;
   height: 100%;
+  width: 100%;
 }
 
 .welcome-page > .scroll {
   vertical-align: middle;
   display: table-cell;
+  width: 100%;
 }
 
 .logo-box > i {
