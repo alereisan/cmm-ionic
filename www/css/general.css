@@ -116,3 +116,8 @@ form.ng-submitted input.ng-valid + i.icon.error {
   font-size: 64px;
   color: white;
 }
+
+.listicon {
+    padding-right: 16px;
+    color: #33CD5F;
+}

@@ -2,35 +2,39 @@
   <ion-content padding="true" class="has-header">
     <h1>CMM Premium</h1>
     <p ng-if="currentUser.remainingLicenseDuration == 0 && !currentUser.subscriber" >
-      <span>Free Car-Contact-Clicks:</span>
-      <strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} of 5 used</strong>
+      <span>Verbleibende Kontaktanfragen:</span>
+      <strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} von 5 benutzt</strong>
     </p>
-    <p ng-if="!currentUser.subscriber">Remaining License Duration: <strong>{{currentUser.remainingLicenseDuration}} days</strong></p>
-    <p ng-if="currentUser.subscriber" class="greentext">CMM Premium Subscription active.</p>
-    <div id="premium-markdown9" style="color:#000000;">
-      <h4>Be ahead of your competition!</h4>
-      <p>Receive <strong>unlimited Car Results</strong> from several Car Markets, within your area:</p>
-      <ul>
-        <li>save unlimited criterias</li>
-        <li>instant push notifications on match</li>
-        <li>unlimited connections</li>
-        <li>no ads</li>
-      </ul>
+    <p ng-if="!currentUser.subscriber">Verbleibende Linzenzdauer: <strong>{{currentUser.remainingLicenseDuration}} Tage</strong></p>
+    <p ng-if="currentUser.subscriber" class="greentext">CMM Premium Abo aktiv.</p>
+    <h3>Premium Vorteile:</h3>
+    <div class="list">
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>Unendlich Resultate</strong>
+      </div>
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>Unendlich Kriterien</strong>
+      </div>
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>Push-Benachrichtigungen</strong>
+      </div>
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>Unlimitiert Kontaktanfragen</strong>
+      </div>
     </div>
-
-    <h3>Products</h3>
     <button ng-show="!products" ng-click="loadProducts()" class="button button-block button-balanced">
-      <i class="ion-arrow-down-c"></i> Load Products
+      <i class="ion-arrow-down-c"></i> CMM Premium aktivieren
     </button>
     <button ng-repeat="product in products" ng-click="buy(product.productId)" class="button button-block button-positive">
-      {{product.title}} - {{product.price}}
+      {{product.title}}: {{product.price}}
     </button>
-    <h3>Restore Purchases</h3>
-    <button ng-click="restore()" class="button button-block button-balanced">
-      <i class="ion-refresh"></i> Restore
-    </button>
-    
-    
+    <!--
+<h3>Restore Purchases</h3>
+<button ng-click="restore()" class="button button-block button-balanced">
+<i class="ion-refresh"></i> Restore
+</button>-->
+
+
     <!-- Stripe Payment Buttons
 <div class="list">
 <div class="item item-divider">Subscription License</div>

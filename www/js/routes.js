@@ -73,7 +73,7 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('welcome', {
+    .state('welcome', {
     url: '/welcome',
     templateUrl: 'templates/welcome.html',
     controller: 'welcomeCtrl'
@@ -133,13 +133,25 @@ angular.module('app.routes', [])
     .state('about', {
     url: '/about',
     templateUrl: 'templates/about.html',
-    controller: 'aboutCtrl'
+    controller: 'infoCtrl'
   })
 
     .state('imprint', {
     url: '/imprint',
     templateUrl: 'templates/imprint.html',
-    controller: 'imprintCtrl'
+    controller: 'infoCtrl'
+  })
+
+    .state('privacy', {
+    url: '/privacy',
+    templateUrl: 'templates/privacy.html',
+    controller: 'infoCtrl'
+  })
+
+    .state('faq', {
+    url: '/faq',
+    templateUrl: 'templates/faq.html',
+    controller: 'infoCtrl'
   })
 
   $urlRouterProvider.otherwise('/page1/results')
