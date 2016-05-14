@@ -37,13 +37,16 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
         console.log('consuming transactionId: ' + data.transactionId);
         return inAppPurchase.consume(data.type, data.receipt, data.signature);
       })
-        .then(function () {
+        .then(function (receipe) {
         var alertPopup = $ionicPopup.alert({
           title: 'Purchase was successful!',
           template: 'Check your console log for the transaction data'
         });
         console.log('consume done!');
         $ionicLoading.hide();
+        payments.validateIAP(receipe).then(function(resp) {
+          ionicToast.show('CMM Premium aktiviert.', 'bottom', false, 5000);
+        });
       })
         .catch(function (err) {
         $ionicLoading.hide();

@@ -30,10 +30,16 @@ angular.module('app.services.splitted').factory('payments', [
       });
     };
 
+    o.validateIAP = function(receipe) {
+      return $http.post(url + '/payment/iap/', receipe).success(function(data) {
+        o.paid = true;
+      });
+    };
+
     o.cancelSubscription = function() {
       return $http.post(url + '/payment/cancel');
     };
 
     return o;
-    
+
   }]);

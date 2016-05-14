@@ -1,13 +1,15 @@
-<ion-view title="Premium" id="page13">
+<ion-view title="Premium" id="page13" class="welcome-bg">
   <ion-content padding="true" class="has-header">
-    <h1>CMM Premium</h1>
-    <p ng-if="currentUser.remainingLicenseDuration == 0 && !currentUser.subscriber" >
-      <span>Verbleibende Kontaktanfragen:</span>
-      <strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} von 5 benutzt</strong>
-    </p>
-    <p ng-if="!currentUser.subscriber">Verbleibende Linzenzdauer: <strong>{{currentUser.remainingLicenseDuration}} Tage</strong></p>
-    <p ng-if="currentUser.subscriber" class="greentext">CMM Premium Abo aktiv.</p>
-    <h3>Premium Vorteile:</h3>
+    <!--
+<h1>CMM Premium</h1>
+<p ng-if="currentUser.remainingLicenseDuration == 0 && !currentUser.subscriber" >
+<span>Verbleibende Kontaktanfragen:</span>
+<strong ng-class="{redtext: currentUser.clickCount == 5, greentext: currentUser.clickCount < 5}">{{currentUser.clickCount}} von 5 benutzt</strong>
+</p>
+<p ng-if="!currentUser.subscriber">Verbleibende Linzenzdauer: <strong>{{currentUser.remainingLicenseDuration}} Tage</strong></p>
+<p ng-if="currentUser.subscriber" class="greentext">CMM Premium Abo aktiv.</p>
+-->
+    <h4 style="color: #fff;">Premium Vorteile:</h4>
     <div class="list">
       <div class="item">
         <i class="ion-checkmark listicon"></i><strong>Unendlich Resultate</strong>
@@ -22,9 +24,16 @@
         <i class="ion-checkmark listicon"></i><strong>Unlimitiert Kontaktanfragen</strong>
       </div>
     </div>
-    <button ng-show="!products" ng-click="loadProducts()" class="button button-block button-balanced">
-      <i class="ion-arrow-down-c"></i> CMM Premium aktivieren
-    </button>
+    <h4 style="color: #fff;">Kostenlose Demo:</h4>
+    <div class="list">
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>5 Kontaktanfragen/Monat</strong>
+      </div>
+      <div class="item">
+        <i class="ion-checkmark listicon"></i><strong>Max. 3 Kriterien</strong>
+      </div>
+    </div>
+
     <button ng-repeat="product in products" ng-click="buy(product.productId)" class="button button-block button-positive">
       {{product.title}}: {{product.price}}
     </button>
@@ -67,4 +76,9 @@ class="button button-positive  button-block">
 </div>
 -->
   </ion-content>
+  <ion-footer-bar class="p0">
+    <button ng-show="!products" ng-click="loadProducts()" class="button button-full button-balanced m0">
+      CMM Premium aktivieren
+    </button>
+  </ion-footer-bar>
 </ion-view>
