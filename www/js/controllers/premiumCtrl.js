@@ -19,6 +19,7 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
         .getProducts(productIds)
         .then(function (products) {
         $ionicLoading.hide();
+        console.log("Products loaded: ", products);
         $scope.products = products;
       })
         .catch(function (err) {
@@ -44,6 +45,7 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
         });
         console.log('consume done!');
         $ionicLoading.hide();
+        console.log('Receipe: ', receipe);
         payments.validateIAP(receipe).then(function(resp) {
           ionicToast.show('CMM Premium aktiviert.', 'bottom', false, 5000);
         });

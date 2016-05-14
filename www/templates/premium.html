@@ -9,30 +9,32 @@
 <p ng-if="!currentUser.subscriber">Verbleibende Linzenzdauer: <strong>{{currentUser.remainingLicenseDuration}} Tage</strong></p>
 <p ng-if="currentUser.subscriber" class="greentext">CMM Premium Abo aktiv.</p>
 -->
-    <h4 style="color: #fff;">Premium Vorteile:</h4>
-    <div class="list">
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>Unendlich Resultate</strong>
+    <span ng-if="!products">
+      <h4 style="color: #fff;">Premium Vorteile:</h4>
+      <div class="list">
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>Unendlich Resultate</strong>
+        </div>
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>Unendlich Kriterien</strong>
+        </div>
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>Push-Benachrichtigungen</strong>
+        </div>
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>Unlimitiert Kontaktanfragen</strong>
+        </div>
       </div>
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>Unendlich Kriterien</strong>
+      <h4 style="color: #fff;">Kostenlose Demo:</h4>
+      <div class="list">
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>5 Kontaktanfragen/Monat</strong>
+        </div>
+        <div class="item">
+          <i class="ion-checkmark listicon"></i><strong>Max. 3 Kriterien</strong>
+        </div>
       </div>
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>Push-Benachrichtigungen</strong>
-      </div>
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>Unlimitiert Kontaktanfragen</strong>
-      </div>
-    </div>
-    <h4 style="color: #fff;">Kostenlose Demo:</h4>
-    <div class="list">
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>5 Kontaktanfragen/Monat</strong>
-      </div>
-      <div class="item">
-        <i class="ion-checkmark listicon"></i><strong>Max. 3 Kriterien</strong>
-      </div>
-    </div>
+    </span>
 
     <button ng-repeat="product in products" ng-click="buy(product.productId)" class="button button-block button-positive">
       {{product.title}}: {{product.price}}
@@ -76,8 +78,8 @@ class="button button-positive  button-block">
 </div>
 -->
   </ion-content>
-  <ion-footer-bar class="p0">
-    <button ng-show="!products" ng-click="loadProducts()" class="button button-full button-balanced m0">
+  <ion-footer-bar ng-show="!products" class="p0">
+    <button ng-click="loadProducts()" class="button button-full button-balanced m0">
       CMM Premium aktivieren
     </button>
   </ion-footer-bar>

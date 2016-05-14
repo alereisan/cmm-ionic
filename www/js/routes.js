@@ -117,10 +117,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/premium.html',
     controller: 'premiumCtrl',
     resolve: {
-      loginRequired: loginRequired,
-      publishablePromise: ['payments', function(payments){
-        return payments.getStripePublishable();
-      }]
+      loginRequired: loginRequired
     }
   })
 
