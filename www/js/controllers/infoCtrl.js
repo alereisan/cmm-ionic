@@ -4,9 +4,9 @@ angular.module('app.controllers.splitted').controller('infoCtrl', [
 
   $scope.infos = [
     {"title": "About", "state": "about"},
-    {"title": "Impressum", "state": "imprint"},
+    //{"title": "Impressum", "state": "imprint"},
     {"title": "Datenschutz", "state": "privacy"},
-    {"title": "FAQ", "state": "faq"},
+    //{"title": "FAQ", "state": "faq"},
   ];
     
 }]);

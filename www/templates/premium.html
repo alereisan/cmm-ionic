@@ -35,7 +35,7 @@
         </div>
       </div>
     </span>
-
+    <h4 style="color: #fff;" ng-if="products">Premium Produkte:</h4>
     <button ng-repeat="product in products" ng-click="buy(product.productId)" class="button button-block button-positive">
       {{product.title}}: {{product.price}}
     </button>
