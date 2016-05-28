@@ -7,7 +7,8 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
   '$rootScope',
   'users',
   'ionicToast',
-  function($scope, $auth, $ionicPopup, $state, $window, $rootScope, users, ionicToast) {
+  '$timeout',
+  function($scope, $auth, $ionicPopup, $state, $window, $rootScope, users, ionicToast, $timeout) {
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -18,11 +19,13 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
         .then(function(response) {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        $state.go('tabsController.results');
+        $timeout(function() {
+          $state.go('tabsController.results');
+        }, 2000);
         ionicToast.show('Erfolgreich angemeldet!', 'bottom', false, 5000); // TODO Translation
         //$ionicPopup.alert({
-          //title: 'Success',
-          //content: 'You have successfully logged in!'
+        //title: 'Success',
+        //content: 'You have successfully logged in!'
         //})
       })
         .catch(function(response) {
@@ -44,7 +47,9 @@ angular.module('app.controllers.splitted').controller('signupCtrl', [
         $auth.login({email: $scope.user.email, password: $scope.user.password});
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-        $state.go('tabsController.results');
+        $timeout(function() {
+          $state.go('tabsController.results');
+        }, 2000);
         ionicToast.show('Erfolgreich angemeldet!', 'bottom', false, 5000); // TODO Translation
       }).catch(function(response) {
         $ionicPopup.alert({

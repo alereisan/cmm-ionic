@@ -11,8 +11,15 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
   '$auth',
   function($scope, $ionicModal, $state, ionicToast, criterias, cars, $cookies, $timeout, $window, $auth) {
 
-    $scope.criterias = criterias.criterias;
     $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
+
+    $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
+      if(oldVal!==newVal){
+        $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
+      }
+    })
+
+    $scope.criterias = criterias.criterias;
 
     // Load Criterias (Async)
     $timeout(function() {
@@ -20,12 +27,6 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
         $scope.criterias = criterias.criterias;
       })
     }, 0);
-
-    $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
-      if(oldVal!==newVal){
-        $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
-      }
-    })
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -50,7 +51,7 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
         ionicToast.show('Bitte Eingaben vervollständigen.', 'bottom', false, 5000);
         return;
         // TODO: CHECK IF USER IS SUBSCRIBER
-      } else if($scope.criterias.length >= 3 && ($scope.currentUser.remainingLicenseDuration == 0 && $scope.currentUser.subscriber) ) {
+      } else if($scope.criterias.length > 3 && $scope.currentUser.remainingLicenseDuration == 0 || !$scope.currentUser.subscriber) {
         ionicToast.show('Upgrade erforderlich.', 'bottom', false, 5000);
         $state.go('premium');
       } else {

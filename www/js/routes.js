@@ -13,7 +13,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/tabsController.html',
     controller: 'tabsCtrl as tabs',
     resolve: {
-      //loginRequired: loginRequired,
+      loginRequired: loginRequired
       //criteriaPromise: ['criterias', function(criterias){
         //return criterias.getList();
       //}]
@@ -28,7 +28,7 @@ angular.module('app.routes', [])
         templateUrl: 'templates/results.html',
         controller: 'resultsCtrl',
         resolve: {
-          //loginRequired: loginRequired,
+          loginRequired: loginRequired
           //carsPromise: ['cars', function(cars) {
             //return
           //}]

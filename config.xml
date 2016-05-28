@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.cmm505262" version="1.0.3" android-versionCode="1691" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>WagenMarkt-Monitor</name>
+  <name>Wagen Markt Monitor</name>
   <description>
-    Überwache Gebrauchtwägen von multiplen Platformen.
+    Überwache Gebrauchtwägen von multiplen Platformen in Echtzeit.
   </description>
   <author email="a.reichgruber@gmail.com" href="http://example.com.com/">
     sansen
