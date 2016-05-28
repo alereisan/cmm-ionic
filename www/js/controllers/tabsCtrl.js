@@ -47,11 +47,11 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
 
     $scope.createCriteria = function(criteria) {
       if(!criteria.tags || criteria.tags === '') {
-        ionicToast.show('Please complete the form.', 'bottom', false, 5000);
+        ionicToast.show('Bitte Eingaben vervollständigen.', 'bottom', false, 5000);
         return;
         // TODO: CHECK IF USER IS SUBSCRIBER
-      } else if($scope.criterias.length >= 5) {
-        ionicToast.show('Upgrade for unlimited criterias.', 'bottom', false, 5000);
+      } else if($scope.criterias.length >= 3 && ($scope.currentUser.remainingLicenseDuration == 0 && $scope.currentUser.subscriber ) {
+        ionicToast.show('Upgrade erforderlich.', 'bottom', false, 5000);
         $state.go('premium');
       } else {
         criterias.create({
@@ -63,7 +63,7 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
         }).then(function(res){
           $state.go('tabsController.criterias');
           $scope.modal.hide();
-          ionicToast.show('Criteria created.', 'bottom', false, 5000);
+          ionicToast.show('Kriterium erstellt.', 'bottom', false, 5000);
         })
       }
     };

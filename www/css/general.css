@@ -143,3 +143,15 @@ form.ng-submitted input.ng-valid + i.icon.error {
   color: #fff !important;
   line-height: 80px;
 }
+
+.premium-badge {
+    text-align: center;
+    right: 14px;
+    position: absolute;
+    background-color: #33CD5F;
+    color: #fff;
+    width: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+}

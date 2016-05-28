@@ -28,10 +28,10 @@
       <h4 style="color: #fff;">Kostenlose Demo:</h4>
       <div class="list">
         <div class="item">
-          <i class="ion-checkmark listicon"></i><strong>5 Kontaktanfragen/Monat</strong>
+          <i class="ion-checkmark listicon"></i><strong>5 Kontaktanfragen/Monat</strong><span class="premium-badge">{{(5 - currentUser.clickCount)}}</span>
         </div>
         <div class="item">
-          <i class="ion-checkmark listicon"></i><strong>Max. 3 Kriterien</strong>
+          <i class="ion-checkmark listicon"></i><strong>Max. 3 Kriterien</strong><span class="premium-badge">{{(3 - criterias.length)}}</span>
         </div>
       </div>
     </span>

@@ -8,7 +8,8 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
   '$ionicPlatform',
   '$ionicLoading',
   '$state',
-  function($scope, payments, users, $timeout, ionicToast, $ionicPopup, $ionicPlatform, $ionicLoading, $state) {
+  'criterias',
+  function($scope, payments, users, $timeout, ionicToast, $ionicPopup, $ionicPlatform, $ionicLoading, $state, criterias) {
 
     var productIds = ['cmm_premium_subscription', 'cmm_premium_1m'];
 
@@ -91,6 +92,9 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
       users.getLoggedInUser().then(function(res) {
         console.log("Resolved LoggedInUser: ", res);
       });
+      criterias.getList().then(function(res) {
+        $scope.criterias = criterias.criterias;
+      })
     }, 0);
 
     $scope.setPaymentPackage = function(p) {
