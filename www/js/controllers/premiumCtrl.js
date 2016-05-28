@@ -14,8 +14,10 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
 
     var spinner = '<ion-spinner icon="dots" class="spinner-stable"></ion-spinner><br/>';
 
+    $scope.user = [];
+
     $scope.loadProducts = function () {
-      $ionicLoading.show({ template: spinner + 'Loading Products...' });
+      $ionicLoading.show({ template: spinner + 'Lade Produkte...' });
       inAppPurchase
         .getProducts(productIds)
         .then(function (products) {
@@ -30,17 +32,16 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
 
     $scope.buy = function (productId) {
 
-      $ionicLoading.show({ template: spinner + 'Purchasing...' });
+      $ionicLoading.show({ template: spinner + 'Kaufen...' });
       inAppPurchase
         .buy(productId)
         .then(function (data) {
         console.log(JSON.stringify(data));
         console.log('consuming transactionId: ' + data.transactionId);
         return inAppPurchase.consume(data.type, data.receipt, data.signature);
-      })
-        .then(function (receipe) {
+      }).then(function (receipe) {
         payments.validateIAP(receipe).then(function(resp) {
-          ionicToast.show('CMM Premium aktiviert.', 'bottom', false, 5000);
+          ionicToast.show('Premium aktiviert.', 'bottom', false, 5000);
           $ionicLoading.hide();
           $state.go('tabsController.results');
         }), function(error) {
@@ -50,14 +51,6 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
             template: 'Bitte versuchen Sie es erneut, oder kontaktieren sie den support.'
           });
         };
-      })
-        .catch(function (err) {
-        $ionicLoading.hide();
-        console.log(err);
-        $ionicPopup.alert({
-          title: 'Something went wrong',
-          template: 'Check your console log for the error details'
-        });
       });
 
     };

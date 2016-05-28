@@ -79,8 +79,9 @@ class="button button-positive  button-block">
 -->
   </ion-content>
   <ion-footer-bar ng-show="!products" class="p0">
-    <button ng-click="loadProducts()" class="button button-full button-balanced m0">
-      CMM Premium aktivieren
+    <button ng-click="loadProducts()" class="button button-full button-balanced m0" ng-disabled="currentUser.remainingLicenseDuration > 0 || currentUser.subscriber">
+      <span ng-if="currentUser.remainingLicenseDuration == 0 && !currentUser.subscriber"> Premium aktivieren</span>
+      <span ng-if="currentUser.remainingLicenseDuration > 0 || currentUser.subscriber"> Premium aktiv (noch {{currentUser.remainingLicenseDuration}} Tage)</span>
     </button>
   </ion-footer-bar>
 </ion-view>
