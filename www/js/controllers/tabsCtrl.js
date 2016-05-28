@@ -50,7 +50,7 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
         ionicToast.show('Bitte Eingaben vervollständigen.', 'bottom', false, 5000);
         return;
         // TODO: CHECK IF USER IS SUBSCRIBER
-      } else if($scope.criterias.length >= 3 && ($scope.currentUser.remainingLicenseDuration == 0 && $scope.currentUser.subscriber ) {
+      } else if($scope.criterias.length >= 3 && ($scope.currentUser.remainingLicenseDuration == 0 && $scope.currentUser.subscriber) ) {
         ionicToast.show('Upgrade erforderlich.', 'bottom', false, 5000);
         $state.go('premium');
       } else {
