@@ -3,7 +3,10 @@
     <ion-content >
       <div class="padding">
         <h4>{{ 'ADD_CRITERIA_HEADING' | translate }}</h4>
-        <p>{{ 'ADD_CRITERIA_PARAGRAPH' | translate }}</p>
+        <div ng-hide="hideHint">
+          <p>{{ 'ADD_CRITERIA_PARAGRAPH' | translate }}</p>
+          <button type="button" ng-click="hideHint = !hideHint">Verstanden</button>
+        </div>
       </div>
       <div class="list">
         <div class="item item-divider">{{ 'WHICH_CAR' | translate }}</div>

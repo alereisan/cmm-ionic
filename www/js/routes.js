@@ -13,10 +13,10 @@ angular.module('app.routes', [])
     templateUrl: 'templates/tabsController.html',
     controller: 'tabsCtrl as tabs',
     resolve: {
-      loginRequired: loginRequired,
-      criteriaPromise: ['criterias', function(criterias){
-        return criterias.getList();
-      }]
+      //loginRequired: loginRequired,
+      //criteriaPromise: ['criterias', function(criterias){
+        //return criterias.getList();
+      //}]
     },
     abstract:true
   })
@@ -28,10 +28,10 @@ angular.module('app.routes', [])
         templateUrl: 'templates/results.html',
         controller: 'resultsCtrl',
         resolve: {
-          loginRequired: loginRequired,
-          carsPromise: ['cars', function(cars) {
-            return cars.getResults(0);
-          }]
+          //loginRequired: loginRequired,
+          //carsPromise: ['cars', function(cars) {
+            //return
+          //}]
         }
       }
     }

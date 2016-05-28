@@ -7,7 +7,8 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
   '$ionicPopup',
   '$ionicPlatform',
   '$ionicLoading',
-  function($scope, payments, users, $timeout, ionicToast, $ionicPopup, $ionicPlatform, $ionicLoading) {
+  '$state',
+  function($scope, payments, users, $timeout, ionicToast, $ionicPopup, $ionicPlatform, $ionicLoading, $state) {
 
     var productIds = ['cmm_premium_subscription', 'cmm_premium_1m'];
 
@@ -19,7 +20,6 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
         .getProducts(productIds)
         .then(function (products) {
         $ionicLoading.hide();
-        console.log("Products loaded: ", products);
         $scope.products = products;
       })
         .catch(function (err) {
@@ -39,16 +39,17 @@ angular.module('app.controllers.splitted').controller('premiumCtrl', [
         return inAppPurchase.consume(data.type, data.receipt, data.signature);
       })
         .then(function (receipe) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Purchase was successful!',
-          template: 'Check your console log for the transaction data'
-        });
-        console.log('consume done!');
-        $ionicLoading.hide();
-        console.log('Receipe: ', receipe);
         payments.validateIAP(receipe).then(function(resp) {
           ionicToast.show('CMM Premium aktiviert.', 'bottom', false, 5000);
-        });
+          $ionicLoading.hide();
+          $state.go('tabsController.results');
+        }), function(error) {
+          $ionicLoading.hide();
+          $ionicPopup.alert({
+            title: 'Zahlung fehlgeschlagen',
+            template: 'Bitte versuchen Sie es erneut, oder kontaktieren sie den support.'
+          });
+        };
       })
         .catch(function (err) {
         $ionicLoading.hide();

@@ -7,7 +7,8 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
   '$ionicPopup',
   '$state',
   'users',
-  function($scope, $window, $location, $rootScope, $auth, $ionicPopup, $state, users) {
+  'ionicToast',
+  function($scope, $window, $location, $rootScope, $auth, $ionicPopup, $state, users, ionicToast) {
 
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider)
@@ -15,10 +16,7 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
         $state.go('tabsController.results');
-        $ionicPopup.alert({
-          title: 'Success',
-          content: 'You have successfully logged in!'
-        });
+        ionicToast.show('Erfolgreich angemeldet!', 'bottom', false, 5000); // TODO Translation
       })
         .catch(function(response) {
         $ionicPopup.alert({
@@ -75,9 +73,10 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
       }).then(function(response) {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+        $state.go('tabsController.results');
+        ionicToast.show('Erfolgreich angemeldet!', 'bottom', false, 5000); // TODO Translation
         // signup for push
         push.register(function(token) {
-          console.log("Device token:",token.token);
           push.saveToken(token);  // persist the token in the Ionic Platform
           // save token localStorage
           $window.localStorage.deviceToken = token.token;
@@ -86,11 +85,10 @@ angular.module('app.controllers.splitted').controller('loginCtrl', [
             token: token.token
           });
         });
-        $state.go('tabsController.results');
       }).catch(function(response) {
         $ionicPopup.alert({
-          title: 'Error',
-          content: response.data ? response.data || response.data.message : response
+          title: 'Error' + response.data.code,
+          content: response.data.message
         })
       });
     };

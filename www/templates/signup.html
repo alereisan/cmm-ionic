@@ -3,22 +3,24 @@
     <span ng-if="!isAuthenticated()">
       <button ng-click="authenticate('facebook')" id="signup-button14" class="button button-positive  button-block icon-left ion-social-facebook" style="background: #3b5998;">{{ 'SIGNUP_WITH_FACEBOOK' | translate }}</button>
       <button ng-click="authenticate('google')" id="signup-button13" class="button button-assertive  button-block icon-left ion-social-google" style="background: #dd4b39;">{{ 'SIGNUP_WITH_GOOGLE' | translate }}</button>
-      <button ng-hide="showEmailForm" type="button" class="button button-balanced  button-block icon-left ion-email" ng-click="showEmailForm = !showEmailForm">{{ 'SIGNUP_WITH_EMAIL' | translate }}</button>
+      <button ng-hide="showEmailForm" type="button" class="button button-dark button-block icon-left ion-email" ng-click="showEmailForm = !showEmailForm">{{ 'SIGNUP_WITH_EMAIL' | translate }}</button>
       <form ng-if="showEmailForm" novalidate="novalidate" ng-submit="signup()" class="list">
         <div class="list">
-          <div class="item item-divider">{{ 'SIGNUP_WITH_EMAIL' | translate }}</div>
+          <div class="item item-dark item-divider">{{ 'SIGNUP_WITH_EMAIL' | translate }}</div>
           <label class="item item-input validated">
+            <i class="icon ion-email placeholder-icon"></i>
             <span class="input-label">{{ 'EMAIL' | translate }}</span>
             <input type="email" ng-model="user.email" placeholder="" required name="email">
             <i class="icon ion-alert-circled error"></i>
           </label>
           <label class="item item-input validated">
+            <i class="icon ion-lock-combination placeholder-icon"></i>
             <span class="input-label">{{ 'PASSWORD' | translate }}</span>
             <input type="password" ng-model="user.password" required name="password" placeholder="">
             <i class="icon ion-alert-circled error"></i>
           </label>
         </div>
-        <button ng-disabled="!user.email || !user.password" type="submit" id="signup-button10" class="button button-stable  button-block">{{ 'SIGNUP' | translate }}</button>
+        <button ng-disabled="!user.email || !user.password" type="submit" id="signup-button10" class="button button-balanced button-block">{{ 'SIGNUP' | translate }}</button>
       </form>
     </span>
     <span ng-if="isAuthenticated()">

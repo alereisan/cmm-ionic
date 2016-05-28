@@ -14,6 +14,13 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
     $scope.criterias = criterias.criterias;
     $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
 
+    // Load Criterias (Async)
+    $timeout(function() {
+      criterias.getList().then(function(res) {
+        $scope.criterias = criterias.criterias;
+      })
+    }, 0);
+
     $scope.$watch(function () { return $window.localStorage.getItem('currentUser'); },function(newVal,oldVal){
       if(oldVal!==newVal){
         $scope.currentUser = JSON.parse($window.localStorage.getItem('currentUser'));
@@ -42,6 +49,7 @@ angular.module('app.controllers.splitted').controller('tabsCtrl', [
       if(!criteria.tags || criteria.tags === '') {
         ionicToast.show('Please complete the form.', 'bottom', false, 5000);
         return;
+        // TODO: CHECK IF USER IS SUBSCRIBER
       } else if($scope.criterias.length >= 5) {
         ionicToast.show('Upgrade for unlimited criterias.', 'bottom', false, 5000);
         $state.go('premium');

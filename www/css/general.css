@@ -85,10 +85,10 @@ form.ng-submitted input.ng-valid + i.icon.error {
 }
 
 .welcome-bg {
-    background: url(../img/welcome1.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+  background: url(../img/welcome1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
 }
 
 .logo-box {
@@ -97,6 +97,10 @@ form.ng-submitted input.ng-valid + i.icon.error {
 }
 
 .logo-box > h1 {
+  color: white;
+}
+
+.logo-box > h2 {
   color: white;
 }
 
@@ -112,12 +116,25 @@ form.ng-submitted input.ng-valid + i.icon.error {
   width: 100%;
 }
 
+.welcome-page > h1 {
+  color: #fff;
+}
+
 .logo-box > i {
   font-size: 64px;
   color: white;
 }
 
 .listicon {
-    padding-right: 16px;
-    color: #33CD5F;
+  padding-right: 16px;
+  color: #33CD5F;
+}
+
+.input-label {
+  display: table;
+  padding: 7px 10px 7px 0px;
+  max-width: 200px;
+  width: 35%;
+  color: #AAA;
+  font-size: 11px;
 }

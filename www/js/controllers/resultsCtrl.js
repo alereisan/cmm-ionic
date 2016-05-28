@@ -5,7 +5,14 @@ angular.module('app.controllers.splitted').controller('resultsCtrl', [
   '$timeout',
   function($scope, $state, cars, $timeout) {
 
-    $scope.cars = cars.cars;
+    $scope.cars = [];//cars.cars;
+
+    // Load Cars (Async)
+    $timeout(function() {
+      cars.getResults(0).then(function(res) {
+        $scope.cars = cars.cars;
+      })
+    }, 0);
 
     $scope.openDetailView = function(car) {
       cars.copyCar(car);
