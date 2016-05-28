@@ -138,3 +138,8 @@ form.ng-submitted input.ng-valid + i.icon.error {
   color: #AAA;
   font-size: 11px;
 }
+
+.sidenav-mail {
+  color: #fff !important;
+  line-height: 80px;
+}
