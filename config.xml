@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.cmm505262" version="1.0.2" android-versionCode="1690" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>CMM</name>
+<widget id="com.ionicframework.cmm505262" version="1.0.3" android-versionCode="1691" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>WagenMarktMonitor</name>
   <description>
-    Car Market Monitoring: Monitor car sales from several marketplaces based on your search critera.
+    Überwache Gebrauchtwägen von multiplen Platformen.
   </description>
   <author email="a.reichgruber@gmail.com" href="http://example.com.com/">
     sansen
